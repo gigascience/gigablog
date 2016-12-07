@@ -46,12 +46,6 @@ Vagrant.configure(2) do |config|
     # FileUtils.chmod_R 0777, ["./assets"]
   end
 
-  if ENV['GIGADB_BOX'] == 'centos' || ''
-    # FileUtils.mkpath("./assets")
-    # config.vm.synced_folder "./assets/", "/vagrant/assets",
-    #    :mount_options => ["dmode=777,fmode=777"]
-  end
-
   ####################
   #### VirtualBox ####
   ####################
@@ -80,7 +74,7 @@ Vagrant.configure(2) do |config|
     aws.region = ENV['AWS_DEFAULT_REGION']
     aws.instance_type = "t2.micro"
     aws.tags = {
-      'Name' => 'gigadb-website',
+      'Name' => 'gigablog',
       'Deployment' => 'test',
     }
     aws.security_groups = ENV['AWS_SECURITY_GROUPS']
