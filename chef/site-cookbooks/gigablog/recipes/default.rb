@@ -40,10 +40,10 @@ bash 'Install GigaBlog' do
     sudo /usr/local/bin/wp post delete --path=/var/www/wordpress 1
     # Configure site
     sudo /usr/local/bin/wp option update blogdescription 'Data driven blogging from the GigaScience Editors' --path=/var/www/wordpress
-    # Add link to gigablog theme
-    sudo ln -s /vagrant/theme/gigablog /var/www/wordpress/wp-content/themes/gigablog
-    # Activate gigablog theme
-    sudo /usr/local/bin/wp theme --path=/var/www/wordpress activate gigablog
+    # Add link to sparkling theme
+    sudo ln -s /vagrant/theme/sparkling /var/www/wordpress/wp-content/themes/sparkling
+    # Activate sparkling theme
+    sudo /usr/local/bin/wp theme --path=/var/www/wordpress activate sparkling
 
     EOH
 end
