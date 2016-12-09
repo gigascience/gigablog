@@ -33,7 +33,10 @@ bash 'Install GigaBlog' do
     # Install WP WXR import plugin
     sudo /usr/local/bin/wp plugin install wordpress-importer --path=/var/www/wordpress
     sudo /usr/local/bin/wp plugin activate wordpress-importer --path=/var/www/wordpress
+    # Enable XML parsing
     sudo yum -y install php-xml
+    # Enable image cropping
+    sudo yum -y install gd gd-devel php-gd
     # Import blog content
     sudo /usr/local/bin/wp import --path=/var/www/wordpress /vagrant/wxr/test.gigablog.wordpress.xml --authors=create
     # Clean up
@@ -46,4 +49,13 @@ bash 'Install GigaBlog' do
     sudo /usr/local/bin/wp theme --path=/var/www/wordpress activate sparkling
 
     EOH
+end
+
+# uploads dir needs to be writable by apache to allow edits
+uploads_dir = "/var/www/wordpress/wp-content/uploads"
+directory uploads_dir do
+  owner 'apache'
+  group 'apache'
+  mode '0755'
+  action :create
 end
