@@ -37,6 +37,11 @@ bash 'Install GigaBlog' do
     sudo yum -y install php-xml
     # Enable image cropping
     sudo yum -y install gd gd-devel php-gd
+    # Create users
+	sudo /usr/local/bin/wp user create --path=/var/www/wordpress scott peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=/var/www/wordpress nicole peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=/var/www/wordpress hans peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=/var/www/wordpress laurie peter@gigasciencejournal.com --role=author
     # Import blog content
     sudo /usr/local/bin/wp import --path=/var/www/wordpress /vagrant/wxr/test.gigablog.wordpress.xml --authors=create
     # Clean up
@@ -47,7 +52,6 @@ bash 'Install GigaBlog' do
     sudo ln -s /vagrant/theme/sparkling /var/www/wordpress/wp-content/themes/sparkling
     # Activate sparkling theme
     sudo /usr/local/bin/wp theme --path=/var/www/wordpress activate sparkling
-
     EOH
 end
 
