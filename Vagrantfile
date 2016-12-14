@@ -38,14 +38,6 @@ Vagrant.configure(2) do |config|
   FileUtils.mkpath("./log")
   FileUtils.chmod_R 0777, ["./log"]
 
-  # CentOS-specific Vagrant configuration to allow Yii assets folder
-  # to be world-readable.
-
-  if ENV['GIGADB_BOX'] == 'aws' # For CentOS VM and AWS instance
-    # FileUtils.mkpath("./assets")
-    # FileUtils.chmod_R 0777, ["./assets"]
-  end
-
   ####################
   #### VirtualBox ####
   ####################
