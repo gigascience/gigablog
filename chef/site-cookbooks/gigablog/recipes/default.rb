@@ -33,17 +33,33 @@ bash 'Install GigaBlog' do
     # Install WP WXR import plugin
     sudo /usr/local/bin/wp plugin install wordpress-importer --path=/var/www/wordpress
     sudo /usr/local/bin/wp plugin activate wordpress-importer --path=/var/www/wordpress
+    # Enable XML parsing
     sudo yum -y install php-xml
+    # Enable image cropping
+    sudo yum -y install gd gd-devel php-gd
+    # Create users
+	sudo /usr/local/bin/wp user create --path=/var/www/wordpress scott peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=/var/www/wordpress nicole peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=/var/www/wordpress hans peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=/var/www/wordpress laurie peter@gigasciencejournal.com --role=author
     # Import blog content
     sudo /usr/local/bin/wp import --path=/var/www/wordpress /vagrant/wxr/test.gigablog.wordpress.xml --authors=create
     # Clean up
     sudo /usr/local/bin/wp post delete --path=/var/www/wordpress 1
     # Configure site
     sudo /usr/local/bin/wp option update blogdescription 'Data driven blogging from the GigaScience Editors' --path=/var/www/wordpress
-    # Add link to gigablog theme
-    sudo ln -s /vagrant/theme/gigablog /var/www/wordpress/wp-content/themes/gigablog
-    # Activate gigablog theme
-    sudo /usr/local/bin/wp theme --path=/var/www/wordpress activate gigablog
-
+    # Add link to sparkling theme
+    sudo ln -s /vagrant/theme/sparkling /var/www/wordpress/wp-content/themes/sparkling
+    # Activate sparkling theme
+    sudo /usr/local/bin/wp theme --path=/var/www/wordpress activate sparkling
     EOH
+end
+
+# uploads dir needs to be writable by apache to allow edits
+uploads_dir = "/var/www/wordpress/wp-content/uploads"
+directory uploads_dir do
+  owner 'apache'
+  group 'apache'
+  mode '0755'
+  action :create
 end
