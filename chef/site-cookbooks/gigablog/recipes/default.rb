@@ -63,3 +63,12 @@ directory uploads_dir do
   mode '0755'
   action :create
 end
+
+# Make theme dir readable by apache
+theme_dir = "/vagrant/gigablog/theme"
+directory theme_dir do
+  owner 'apache'
+  group 'apache'
+  mode '0755'
+  action :create
+end
