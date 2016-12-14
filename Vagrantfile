@@ -105,7 +105,6 @@ Vagrant.configure(2) do |config|
         :root_dir => "/vagrant",
         :site_dir => "/vagrant",
         :log_dir => "/vagrant/logs",
-        :yii_path => "/opt/yii-1.1.10/framework/yii.php",
       },
       :nginx => {
         :version => :latest,
@@ -114,9 +113,6 @@ Vagrant.configure(2) do |config|
         :version => '9.1',
         :repo_version => '9.1',
         #:dir => '/var/lib/pgsql/9.1/data',
-      },
-      :elasticsearch => {
-        :version => '1.3.4',
       },
       :java => {
         #:install_flavor => 'oracle',
