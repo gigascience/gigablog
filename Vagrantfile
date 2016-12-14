@@ -1,11 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-if ENV['GIGADB_BOX'] == 'ubuntu'
-  # Use trusty32 box which is Ubuntu-14.04
-  box = "trusty32"
-  box_url = "https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualbox.box"
-elsif ENV['GIGADB_BOX'] == 'aws'
+if ENV['GIGABLOG_BOX'] == 'aws'
   box = "dummy"
   box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
 else
@@ -90,7 +86,7 @@ Vagrant.configure(2) do |config|
     ############################################################
     chef.environment = "development"
 
-    if ENV['GIGADB_BOX'] == 'aws'
+    if ENV['GIGABLOG_BOX'] == 'aws'
         chef.add_recipe "aws"
     else
         chef.add_recipe "vagrant"
@@ -98,9 +94,9 @@ Vagrant.configure(2) do |config|
 
     # You may also specify custom JSON attributes:
     chef.json = {
-      :gigadb_box => ENV['GIGADB_BOX'],
+      :gigablog_box => ENV['GIGABLOG_BOX'],
       :environment => "vagrant",
-      :gigadb => {
+      :gigablog => {
         :server_names => ["localhost"],
         :root_dir => "/vagrant",
         :site_dir => "/vagrant",
