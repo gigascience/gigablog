@@ -4,7 +4,9 @@
     "wordpress": {
       "db": {
         "root_password": "gigablog",
-        "instance_name": "gigablog_db"
+        "instance_name": "gigablog_db",
+        "name": "wordpressdb",
+        "user": "wordpressuser"
       }
     },
     "gigablog": {
