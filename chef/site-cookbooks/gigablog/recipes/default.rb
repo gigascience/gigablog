@@ -22,6 +22,7 @@ end
 ### Install WordPress CLI and import GigaBlog content ###
 #########################################################
 
+site_url = node[:gigablog][:url]
 bash 'Install GigaBlog' do
   cwd '/tmp'
   code <<-EOH
@@ -29,7 +30,7 @@ bash 'Install GigaBlog' do
   	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
     chmod +x wp-cli.phar
     sudo mv wp-cli.phar /usr/local/bin/wp
-    sudo /usr/local/bin/wp core install --path=/var/www/wordpress --url=localhost:9170 --title=GigaBlog --admin_user=peter --admin_email=peter@gigasciencejournal.com --admin_password=gigadb --skip-email
+    sudo /usr/local/bin/wp core install --path=/var/www/wordpress --url=#{site_url} --title=GigaBlog --admin_user=peter --admin_email=peter@gigasciencejournal.com --admin_password=gigadb --skip-email
     # Install WP WXR import plugin
     sudo /usr/local/bin/wp plugin install wordpress-importer --path=/var/www/wordpress
     sudo /usr/local/bin/wp plugin activate wordpress-importer --path=/var/www/wordpress

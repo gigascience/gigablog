@@ -16,7 +16,8 @@
       "user": "",
       "user_name": "",
       "user_public_key": "",
-      "user_group": "gigablog-admin"
+      "user_group": "gigablog-admin",
+      "url:" "localhost:9170"
     },
     "aws": {
         "aws_access_key_id": "",
