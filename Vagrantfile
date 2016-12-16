@@ -100,23 +100,11 @@ Vagrant.configure(2) do |config|
         :server_names => ["localhost"],
         :root_dir => "/vagrant",
         :site_dir => "/vagrant",
-        :log_dir => "/vagrant/logs",
+        :log_dir => "/vagrant/log",
       },
       :nginx => {
         :version => :latest,
-      },
-      :postgresql => {
-        :version => '9.1',
-        :repo_version => '9.1',
-        #:dir => '/var/lib/pgsql/9.1/data',
-      },
-      :java => {
-        #:install_flavor => 'oracle',
-        :jdk_version => '7',
-        :oracle => {
-           "accept_oracle_download_terms" => true,
-        },
-      },
+      }
     }
 
     # Additional chef settings to put in solo.rb
