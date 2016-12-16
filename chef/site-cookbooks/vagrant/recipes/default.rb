@@ -7,13 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-case node[:platform_family]
-when 'rhel'
-    include_recipe 'vagrant::redhat'
-when 'debian'
-    include_recipe 'vagrant::debian'
-end
-
 include_recipe "gigablog"
 
 ['vim', 'tree'].each do |pkg|
