@@ -4,7 +4,7 @@
     "wordpress": {
       "db": {
         "root_password": "gigablog",
-        "instance_name": "gigablog_db",
+        "instance_name": "default",
         "name": "wordpressdb",
         "user": "wordpressuser"
       }
@@ -17,13 +17,13 @@
       "user_name": "",
       "user_public_key": "",
       "user_group": "gigablog-admin"
+    },
+    "aws": {
+        "aws_access_key_id": "",
+        "aws_secret_access_key": "",
+        "aws_default_region": "ap-southeast-1",
+        "aws_security_groups": ""
     }
-  },
-  "aws": {
-    "aws_access_key_id": "",
-    "aws_secret_access_key": "",
-    "aws_default_region": "ap-southeast-1",
-    "aws_security_groups": ""
   },
   "nginx": {
     "log_dir": "/var/log/nginx"
