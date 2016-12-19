@@ -61,7 +61,7 @@ bash 'Install GigaBlog' do
   	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
     chmod +x wp-cli.phar
     sudo mv wp-cli.phar /usr/local/bin/wp
-    sudo /usr/local/bin/wp core install --path=#{wordpress_dir} --url=#{site_url} --title=GigaBlog --admin_user=peter --admin_email=peter@gigasciencejournal.com --admin_password=gigadb --skip-email
+    sudo /usr/local/bin/wp core install --path=#{wordpress_dir} --url=#{site_url} --title=GigaBlog --admin_user=#{admin} --admin_email=#{admin_email} --admin_password=#{admin_password} --skip-email
     # Install WP WXR import plugin
     sudo /usr/local/bin/wp plugin install wordpress-importer --path=#{wordpress_dir}
     sudo /usr/local/bin/wp plugin activate wordpress-importer --path=#{wordpress_dir}
