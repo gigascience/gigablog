@@ -47,12 +47,12 @@ user3 = node[:gigablog][:user3]
 user3_name = node[:gigablog][:user3_name]
 user3_email = node[:gigablog][:user3_email]
 user3_password = node[:gigablog][:user3_password]
-user4_role = node[:gigablog][:user4_role]
+user3_role = node[:gigablog][:user3_role]
 user4 = node[:gigablog][:user4]
 user4_name = node[:gigablog][:user4_name]
 user4_email = node[:gigablog][:user4_email]
 user4_password = node[:gigablog][:user4_password]
-user5_role = node[:gigablog][:user5_role]
+user5_role = node[:gigablog][:user4_role]
 
 bash 'Install GigaBlog' do
   cwd '/tmp'
