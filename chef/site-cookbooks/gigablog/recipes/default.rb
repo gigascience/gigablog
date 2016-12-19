@@ -23,6 +23,11 @@ end
 #########################################################
 
 site_url = node[:gigablog][:url]
+wordpress_dir = node[:wordpress][:dir]
+vagrant_dir = node[:gigablog][:root_dir]
+wxr_file = node[:gigablog][:wxr_file]
+wxr_path = "#{vagrant_dir}/wxr/#{wxr_file}"
+
 bash 'Install GigaBlog' do
   cwd '/tmp'
   code <<-EOH
@@ -30,25 +35,25 @@ bash 'Install GigaBlog' do
   	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
     chmod +x wp-cli.phar
     sudo mv wp-cli.phar /usr/local/bin/wp
-    sudo /usr/local/bin/wp core install --path=/var/www/wordpress --url=#{site_url} --title=GigaBlog --admin_user=peter --admin_email=peter@gigasciencejournal.com --admin_password=gigadb --skip-email
+    sudo /usr/local/bin/wp core install --path=#{wordpress_dir} --url=#{site_url} --title=GigaBlog --admin_user=peter --admin_email=peter@gigasciencejournal.com --admin_password=gigadb --skip-email
     # Install WP WXR import plugin
-    sudo /usr/local/bin/wp plugin install wordpress-importer --path=/var/www/wordpress
-    sudo /usr/local/bin/wp plugin activate wordpress-importer --path=/var/www/wordpress
+    sudo /usr/local/bin/wp plugin install wordpress-importer --path=#{wordpress_dir}
+    sudo /usr/local/bin/wp plugin activate wordpress-importer --path=#{wordpress_dir}
     # Enable XML parsing
     sudo yum -y install php-xml
     # Enable image cropping
     sudo yum -y install gd gd-devel php-gd
     # Create users
-	sudo /usr/local/bin/wp user create --path=/var/www/wordpress scott peter@gigasciencejournal.com --role=author
-	sudo /usr/local/bin/wp user create --path=/var/www/wordpress nicole peter@gigasciencejournal.com --role=author
-	sudo /usr/local/bin/wp user create --path=/var/www/wordpress hans peter@gigasciencejournal.com --role=author
-	sudo /usr/local/bin/wp user create --path=/var/www/wordpress laurie peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} scott peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} nicole peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} hans peter@gigasciencejournal.com --role=author
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} laurie peter@gigasciencejournal.com --role=author
     # Import blog content
-    sudo /usr/local/bin/wp import --path=/var/www/wordpress /vagrant/wxr/test.gigablog.wordpress.xml --authors=create
+    sudo /usr/local/bin/wp import --path=#{wordpress_dir} #{wxr_path} --authors=create
     # Clean up
-    sudo /usr/local/bin/wp post delete --path=/var/www/wordpress 1
+    sudo /usr/local/bin/wp post delete --path=#{wordpress_dir} 1
     # Configure site
-    sudo /usr/local/bin/wp option update blogdescription 'Data driven blogging from the GigaScience Editors' --path=/var/www/wordpress
+    sudo /usr/local/bin/wp option update blogdescription 'Data driven blogging from the GigaScience Editors' --path=#{wordpress_dir}
     # Add link to sparkling theme
     sudo ln -s /vagrant/theme/sparkling /var/www/wordpress/wp-content/themes/sparkling
     # Activate sparkling theme
