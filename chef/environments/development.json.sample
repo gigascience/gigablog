@@ -10,14 +10,14 @@
       }
     },
     "gigablog": {
-      "site_dir": "/vagrant",
-      "root_dir": "/vagrant",
-      "log_dir": "/vagrant/log",
+      "vagrant_dir": "/vagrant",
+      "log_dir": "/var/www/wordpress",
       "user": "",
       "user_name": "",
       "user_public_key": "",
       "user_group": "gigablog-admin",
-      "url:" "localhost:9170"
+      "url": "localhost:9170",
+      "wxr_file": "test.gigablog.wordpress.xml"
     },
     "aws": {
         "aws_access_key_id": "",

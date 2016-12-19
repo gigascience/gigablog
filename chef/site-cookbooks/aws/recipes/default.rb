@@ -7,12 +7,12 @@
 
 include_recipe 'user'
 include_recipe 'iptables'
-include_recipe 'fail2ban'
+#include_recipe 'fail2ban'
 include_recipe 'selinux'
 include_recipe 'cron'
 
 # Locates GigaDB in /vagrant directory
-site_dir = node[:gigadb][:site_dir]
+vagrant_dir = node[:gigablog][:vagrant_dir]
 
 ############################
 #### Configure iptables ####
@@ -32,21 +32,21 @@ iptables_rule 'postfix'
 ############################
 
 # Protect against DDoS attacks
-file "/etc/fail2ban/jail.local" do
-    content <<-EOS
-[ssh-ddos]
+#file "/etc/fail2ban/jail.local" do
+#    content <<-EOS
+#[ssh-ddos]
 
-enabled  = true
-port     = ssh
-filter   = sshd-ddos
-logpath  = /var/log/secure
-maxretry = 6
-    EOS
-    owner "root"
-    group "root"
-    mode 0644
-    notifies :restart, "service[fail2ban]"
-end
+#enabled  = true
+#port     = ssh
+#filter   = sshd-ddos
+#logpath  = /var/log/secure
+#maxretry = 6
+#    EOS
+#    owner "root"
+#    group "root"
+#    mode 0644
+#    notifies :restart, "service[fail2ban]"
+#end
 
 ###########################
 #### Configure SELinux ####
@@ -199,15 +199,15 @@ template "root/.aws/config" do
     action :create_if_missing
 end
 
-template "#{site_dir}/scripts/db_backup.sh" do
+template "#{vagrant_dir}/scripts/db_backup.sh" do
     source 'db_backup.sh.erb'
     mode '0644'
 end
 
 bash 'make db_backup.sh executable' do
     code <<-EOH
-        chown centos:gigablog-admin #{site_dir}/scripts/db_backup.sh
-        chmod ugo+x #{site_dir}/scripts/db_backup.sh
+        chown centos:gigablog-admin #{vagrant_dir}/scripts/db_backup.sh
+        chmod ugo+x #{vagrant_dir}/scripts/db_backup.sh
     EOH
 end
 
@@ -219,7 +219,7 @@ cron 'database backup cron job' do
     shell '/bin/bash'
     path '/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin'
     user 'root'
-    command '/vagrant/scripts/db_backup.sh'
+    command '#{vagrant_dir}/scripts/db_backup.sh'
 end
 
 bash 'restart cron service' do
