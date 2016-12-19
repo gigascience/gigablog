@@ -79,26 +79,26 @@ end
 ##############################
 
 # Create user accounts
-user = node[:gigablog][:user]
-user_name = node[:gigablog][:user_name]
-user_public_key = node[:gigablog][:user_public_key]
+admin = node[:gigablog][:admin]
+admin_name = node[:gigablog][:admin_name]
+admin_public_key = node[:gigablog][:admin_public_key]
 
-user_account node[:gigablog][:user] do
-    comment   node[:gigablog][:user_name]
-    ssh_keys  node[:gigablog][:user_public_key]
-    home      "/home/#{node[:gigablog][:user]}"
+user_account #{admin} do
+    comment   #{admin_name}
+    ssh_keys  #{admin_public_key}
+    home      "/home/#{admin}"
 end
 
 # Create group for GigaDB admins
 group 'gigablog-admin' do
   action    :create
-  members   [user]
+  members   [#{admin}]
   append    true
 end
 
 group 'wheel' do
     action  :modify
-    members [user]
+    members [#{admin}]
     append  true
 end
 
@@ -159,71 +159,3 @@ end
 ##########################
 
 include_recipe 'gigablog'
-
-
-###########################################
-#### Set up automated database backups ####
-###########################################
-
-aws_access_key = node[:aws][:aws_access_key_id]
-aws_secret_access_key = node[:aws][:aws_secret_access_key]
-aws_default_region = node[:aws][:aws_default_region]
-
-# Install AWS CLI
-bash 'Install AWS CLI' do
-    code <<-EOH
-        curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-        unzip awscli-bundle.zip
-        sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-        if [ -d /root/.aws ]
-        then
-            # Will enter here if .aws exists, even if it contains spaces
-            echo ".aws folder exists"
-        else
-            mkdir -p /root/.aws
-        fi
-    EOH
-end
-
-template "/root/.aws/credentials" do
-    source 'aws_credentials.erb'
-    mode '0644'
-    ignore_failure true
-    action :create_if_missing
-end
-
-template "root/.aws/config" do
-    source 'aws_config.erb'
-    mode '0644'
-    ignore_failure true
-    action :create_if_missing
-end
-
-template "#{vagrant_dir}/scripts/db_backup.sh" do
-    source 'db_backup.sh.erb'
-    mode '0644'
-end
-
-bash 'make db_backup.sh executable' do
-    code <<-EOH
-        chown centos:gigablog-admin #{vagrant_dir}/scripts/db_backup.sh
-        chmod ugo+x #{vagrant_dir}/scripts/db_backup.sh
-    EOH
-end
-
-cron 'database backup cron job' do
-    minute '59'
-    hour '23'
-    day '*'
-    month '*'
-    shell '/bin/bash'
-    path '/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin'
-    user 'root'
-    command '#{vagrant_dir}/scripts/db_backup.sh'
-end
-
-bash 'restart cron service' do
-    code <<-EOH
-        service crond restart
-    EOH
-end
