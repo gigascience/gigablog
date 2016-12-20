@@ -21,3 +21,7 @@ Session.vim
 tags
 
 chef/environments/development.json
+
+backups/
+log/
+scripts/
