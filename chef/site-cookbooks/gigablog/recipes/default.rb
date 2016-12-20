@@ -28,32 +28,6 @@ vagrant_dir = node[:gigablog][:root_dir]
 wxr_file = node[:gigablog][:wxr_file]
 wxr_path = "#{vagrant_dir}/wxr/#{wxr_file}"
 
-admin = node[:gigablog][:admin]
-admin_name = node[:gigablog][:admin_name]
-admin_email = node[:gigablog][:admin_email]
-admin_password = node[:gigablog][:admin_password]
-admin_role = node[:gigablog][:admin_role]
-user1 = node[:gigablog][:user1]
-user1_name = node[:gigablog][:user1_name]
-user1_email = node[:gigablog][:user1_email]
-user1_password = node[:gigablog][:user1_password]
-user1_role = node[:gigablog][:user1_role]
-user2 = node[:gigablog][:user2]
-user2_name =  node[:gigablog][:user2_name]
-user2_email = node[:gigablog][:user2_email]
-user2_password = node[:gigablog][:user1_password]
-user2_role = node[:gigablog][:user2_role]
-user3 = node[:gigablog][:user3]
-user3_name = node[:gigablog][:user3_name]
-user3_email = node[:gigablog][:user3_email]
-user3_password = node[:gigablog][:user3_password]
-user3_role = node[:gigablog][:user3_role]
-user4 = node[:gigablog][:user4]
-user4_name = node[:gigablog][:user4_name]
-user4_email = node[:gigablog][:user4_email]
-user4_password = node[:gigablog][:user4_password]
-user4_role = node[:gigablog][:user4_role]
-
 bash 'Install GigaBlog' do
   cwd '/tmp'
   code <<-EOH
@@ -61,7 +35,7 @@ bash 'Install GigaBlog' do
   	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
     chmod +x wp-cli.phar
     sudo mv wp-cli.phar /usr/local/bin/wp
-    sudo /usr/local/bin/wp core install --path=#{wordpress_dir} --url=#{site_url} --title=GigaBlog --admin_user=#{admin} --admin_email=#{admin_email} --admin_password=#{admin_password} --skip-email
+    sudo /usr/local/bin/wp core install --path=#{wordpress_dir} --url=#{site_url} --title=GigaBlog --admin_user=#{node[:gigablog][:admin]} --admin_email=#{node[:gigablog][:admin_email]} --admin_password=#{node[:gigablog][:admin_password]} --skip-email
     # Install WP WXR import plugin
     sudo /usr/local/bin/wp plugin install wordpress-importer --path=#{wordpress_dir}
     sudo /usr/local/bin/wp plugin activate wordpress-importer --path=#{wordpress_dir}
@@ -70,11 +44,11 @@ bash 'Install GigaBlog' do
     # Enable image cropping
     sudo yum -y install gd gd-devel php-gd
     # Create users
-    sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{admin} #{admin_email} --role=#{admin_role}
-	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{user1} #{user1_email} --role=#{user1_role}
-	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{user2} #{user2_email} --role=#{user2_role}
-	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{user3} #{user3_email} --role=#{user3_role}
-	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{user4} #{user4_email} --role=#{user4_role}
+    sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:admin]} #{node[:gigablog][:admin_email]} --role=#{node[:gigablog][:admin_role]}
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user1]} #{node[:gigablog][:user1_email]} --role=#{node[:gigablog][:user1_role]} --user_pass=#{node[:gigablog][:user1_password]} --display_name=#{node[:gigablog][:user1_name]}
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user2]} #{node[:gigablog][:user2_email]} --role=#{node[:gigablog][:user2_role]} --user_pass=#{node[:gigablog][:user2_password]} --display_name=#{node[:gigablog][:user2_name]}
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user3]} #{node[:gigablog][:user3_email]} --role=#{node[:gigablog][:user3_role]} --user_pass=#{node[:gigablog][:user3_password]} --display_name=#{node[:gigablog][:user3_name]}
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user4]} #{node[:gigablog][:user4_email]} --role=#{node[:gigablog][:user4_role]} --user_pass=#{node[:gigablog][:user4_password]} --display_name=#{node[:gigablog][:user4_name]}
     # Import blog content
     sudo /usr/local/bin/wp import --path=#{wordpress_dir} #{wxr_path} --authors=create
     # Clean up
@@ -84,7 +58,7 @@ bash 'Install GigaBlog' do
     # Add link to sparkling theme
     sudo ln -s /vagrant/theme/sparkling /var/www/wordpress/wp-content/themes/sparkling
     # Activate sparkling theme
-    sudo /usr/local/bin/wp theme --path=/var/www/wordpress activate sparkling
+    sudo /usr/local/bin/wp theme --path=#{wordpress_dir} activate sparkling
     EOH
 end
 
@@ -117,9 +91,10 @@ aws_default_region = node[:aws][:aws_default_region]
 # Install AWS CLI
 bash 'Install AWS CLI' do
     code <<-EOH
-        curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-        unzip awscli-bundle.zip
-        sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+        curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle.zip" >> /vagrant/log/aws.log 2>&1
+        sudo yum -y install unzip >> /vagrant/log/aws.log 2>&1
+        sudo /usr/bin/unzip /tmp/awscli-bundle.zip -d /tmp >> /vagrant/log/aws.log 2>&1
+        sudo /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws >> /vagrant/log/aws.log 2>&1
         if [ -d /root/.aws ]
         then
             # Will enter here if .aws exists, even if it contains spaces
@@ -156,7 +131,7 @@ bash 'make db_backup.sh executable' do
     EOH
 end
 
-cron 'database backup cron job' do
+cron 'WordPress backup cron job' do
     minute '59'
     hour '23'
     day '*'
@@ -164,7 +139,7 @@ cron 'database backup cron job' do
     shell '/bin/bash'
     path '/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin'
     user 'root'
-    command '#{vagrant_dir}/scripts/db_backup.sh'
+    command '/vagrant/scripts/db_backup.sh'
 end
 
 bash 'restart cron service' do
