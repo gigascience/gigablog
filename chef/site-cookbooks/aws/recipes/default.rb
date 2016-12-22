@@ -83,22 +83,21 @@ admin = node[:gigablog][:admin]
 admin_name = node[:gigablog][:admin_name]
 admin_public_key = node[:gigablog][:admin_public_key]
 
-user_account #{admin} do
-    comment   #{admin_name}
-    ssh_keys  #{admin_public_key}
-    home      "/home/#{admin}"
+user_account node[:gigablog][:admin] do
+    comment   node[:gigablog][:admin_name]
+    ssh_keys  node[:gigablog][:admin_public_key]
 end
 
 # Create group for GigaDB admins
 group 'gigablog-admin' do
   action    :create
-  members   [#{admin}]
+  members   [node[:gigablog][:admin]]
   append    true
 end
 
 group 'wheel' do
     action  :modify
-    members [#{admin}]
+    members [node[:gigablog][:admin]]
     append  true
 end
 
@@ -111,6 +110,8 @@ end
 # created.
 dirs = %w{
   log
+  scripts
+  theme
 }
 
 dirs.each do |component|
