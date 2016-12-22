@@ -28,6 +28,9 @@ vagrant_dir = node[:gigablog][:root_dir]
 wxr_file = node[:gigablog][:wxr_file]
 wxr_path = "#{vagrant_dir}/wxr/#{wxr_file}"
 
+root_password = node[:wordpress][:db][:root_password]
+user_password = node[:wordpress][:db][:password]
+
 bash 'Install GigaBlog' do
   cwd '/tmp'
   code <<-EOH
@@ -59,6 +62,13 @@ bash 'Install GigaBlog' do
     sudo ln -s /vagrant/theme/sparkling /var/www/wordpress/wp-content/themes/sparkling
     # Activate sparkling theme
     sudo /usr/local/bin/wp theme --path=#{wordpress_dir} activate sparkling
+
+    # Set wordpressuser mysql password
+    /usr/bin/mysql -u root --password=#{root_password} --execute "SET PASSWORD FOR 'wordpressuser'@'localhost' = PASSWORD('#{user_password}');"
+	/usr/bin/mysql -u root --password=#{root_password} --execute "FLUSH PRIVILEGES;"
+
+    # Update wp-config.php
+	sed -i "/DB_PASSWORD/s/'[^']*'/'#{user_password}'/2" /var/www/wordpress/wp-config.php
     EOH
 end
 
