@@ -6,10 +6,14 @@
         "root_password": "gigablog",
         "instance_name": "default",
         "name": "wordpressdb",
-        "user": "wordpressuser"
+        "user": "wordpressuser",
+        "password": ""
       }
     },
     "gigablog": {
+      "instance": "deploy",
+	  "sqlS3filename": "",
+	  "wpS3filename": "",
       "vagrant_dir": "/vagrant",
       "log_dir": "/var/www/wordpress",
       "admin": "",
