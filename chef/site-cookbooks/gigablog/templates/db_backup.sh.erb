@@ -21,9 +21,6 @@ s3filename=$s3_prefix$(date +%Y%m%d)".sql"
 # Generate database SQL dump
 mysqldump -u root --password=<%= node[:wordpress][:db][:root_password] %> <%= node[:wordpress][:db][:name] %> > $filename
 
-# Copy backup file to S3 and log output and errors
-/usr/local/bin/aws s3 cp $filename $s3filename >> <%= node[:gigablog][:vagrant_dir] %>/log/aws.log 2>&1
-
 # Also need backup of wordpress directory
 wp_dir="/var/www/wordpress"
 
@@ -32,6 +29,9 @@ s3filename=$s3_prefix$(date +%Y%m%d)"_gigablog_wp.tar.gz"
 
 # Compress files
 tar -cvzf $directory_name"/"$zip_filename $wp_dir
+
+# Copy backup file to S3 and log output and errors
+/usr/local/bin/aws s3 cp $filename $s3filename >> <%= node[:gigablog][:vagrant_dir] %>/log/aws.log 2>&1
 
 # Copy database backup file to S3 and log output and errors
 /usr/local/bin/aws s3 cp $directory_name"/"$zip_filename $s3filename >> <%= node[:gigablog][:vagrant_dir] %>/log/aws.log 2>&1
