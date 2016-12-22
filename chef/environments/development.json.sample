@@ -11,6 +11,7 @@
       }
     },
     "gigablog": {
+      "theme": "dazzling",
       "instance": "deploy",
 	  "sqlS3filename": "",
 	  "wpS3filename": "",
