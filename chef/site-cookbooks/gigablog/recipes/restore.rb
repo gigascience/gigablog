@@ -52,8 +52,6 @@ end
 site_url = node[:gigablog][:url]
 wordpress_dir = node[:wordpress][:dir]
 vagrant_dir = node[:gigablog][:root_dir]
-wxr_file = node[:gigablog][:wxr_file]
-wxr_path = "#{vagrant_dir}/wxr/#{wxr_file}"
 
 root_password = node[:wordpress][:db][:root_password]
 user_password = node[:wordpress][:db][:password]
@@ -85,7 +83,7 @@ bash 'Restore GigaBlog' do
     /usr/local/bin/aws s3 cp s3://gigablog-backups/#{node[:gigablog][:wpS3filename]}  /tmp/gigablog_wp.tar.gz >> #{vagrant_dir}/log/aws.log 2>&1
     tar -xvzf /tmp/gigablog_wp.tar.gz -C /tmp
     sudo rm -fr /var/www/wordpress
-    sudo mv /tmp/var/www/wordpress /var/www
+    sudo mv /tmp/wordpress /var/www
 
     # Set wordpressuser mysql password
 	/usr/bin/mysql -u root --password=#{root_password} --execute "SET PASSWORD FOR 'wordpressuser'@'localhost' = PASSWORD('#{user_password}');"
