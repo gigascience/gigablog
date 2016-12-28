@@ -91,16 +91,10 @@ bash 'Restore GigaBlog' do
 
 	# Update wp-config.php
 	sed -i "/DB_PASSWORD/s/'[^']*'/'#{user_password}'/2" /var/www/wordpress/wp-config.php
-    EOH
-end
 
-# uploads dir needs to be writable by apache to allow edits
-uploads_dir = "/var/www/wordpress/wp-content/uploads"
-directory uploads_dir do
-  owner 'apache'
-  group 'apache'
-  mode '0755'
-  action :create
+	# uploads dir needs to be writable by apache to allow edits
+ 	sudo chown -R apache:apache /var/www/wordpress/wp-content/uploads/*
+    EOH
 end
 
 # Make theme dir readable by apache
