@@ -48,10 +48,11 @@ bash 'Install GigaBlog' do
     # Enable image cropping
     sudo yum -y install gd gd-devel php-gd
     # Create users
-	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user1]} #{node[:gigablog][:user1_email]} --role=#{node[:gigablog][:user1_role]} --user_pass=#{node[:gigablog][:user1_password]} --display_name=#{node[:gigablog][:user1_name]}
-	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user2]} #{node[:gigablog][:user2_email]} --role=#{node[:gigablog][:user2_role]} --user_pass=#{node[:gigablog][:user2_password]} --display_name=#{node[:gigablog][:user2_name]}
-	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user3]} #{node[:gigablog][:user3_email]} --role=#{node[:gigablog][:user3_role]} --user_pass=#{node[:gigablog][:user3_password]} --display_name=#{node[:gigablog][:user3_name]}
-	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user4]} #{node[:gigablog][:user4_email]} --role=#{node[:gigablog][:user4_role]} --user_pass=#{node[:gigablog][:user4_password]} --display_name=#{node[:gigablog][:user4_name]}
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user1]} #{node[:gigablog][:user1_email]} --role=#{node[:gigablog][:user1_role]} --user_pass=#{node[:gigablog][:user1_password]} --display_name='#{node[:gigablog][:user1_name]}' --user_url=#{node[:gigablog][:user1_url]} --description='#{node[:gigablog][:user1_description]}'
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user2]} #{node[:gigablog][:user2_email]} --role=#{node[:gigablog][:user2_role]} --user_pass=#{node[:gigablog][:user2_password]} --display_name='#{node[:gigablog][:user2_name]}' --description='#{node[:gigablog][:user2_description]}'
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user3]} #{node[:gigablog][:user3_email]} --role=#{node[:gigablog][:user3_role]} --user_pass=#{node[:gigablog][:user3_password]} --display_name='#{node[:gigablog][:user3_name]}'
+	sudo /usr/local/bin/wp user create --path=#{wordpress_dir} #{node[:gigablog][:user4]} #{node[:gigablog][:user4_email]} --role=#{node[:gigablog][:user4_role]} --user_pass=#{node[:gigablog][:user4_password]} --display_name='#{node[:gigablog][:user4_name]}'
+
     # Import blog content
     sudo /usr/local/bin/wp import --path=#{wordpress_dir} #{wxr_path} --authors=create
     # Clean up
