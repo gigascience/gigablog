@@ -82,7 +82,7 @@ bash 'Restore GigaBlog' do
     # Restore WP directory
     /usr/local/bin/aws s3 cp s3://gigablog-backups/#{node[:gigablog][:wpS3filename]}  /tmp/gigablog_wp.tar.gz >> #{vagrant_dir}/log/aws.log 2>&1
     tar -xvzf /tmp/gigablog_wp.tar.gz -C /tmp
-    sudo rm -fr /var/www/wordpress
+    sudo rm -fr #{wordpress_dir}
     sudo mv /tmp/wordpress /var/www
 
     # Set wordpressuser mysql password
@@ -90,11 +90,15 @@ bash 'Restore GigaBlog' do
 	/usr/bin/mysql -u root --password=#{root_password} --execute "FLUSH PRIVILEGES;"
 
 	# Update wp-config.php
-	sed -i "/DB_PASSWORD/s/'[^']*'/'#{user_password}'/2" /var/www/wordpress/wp-config.php
+	sed -i "/DB_PASSWORD/s/'[^']*'/'#{user_password}'/2" #{wordpress_dir}/wp-config.php
 
 	# uploads dir needs to be writable by apache to allow edits
- 	sudo chown -R apache:apache /var/www/wordpress/wp-content/uploads/*
-    EOH
+ 	sudo chown -R apache:apache #{wordpress_dir}/wp-content/uploads/*
+
+ 	# Update users
+	sudo /usr/local/bin/wp user update --path=#{wordpress_dir} #{node[:gigablog][:user1_email]}  --user_url=#{node[:gigablog][:user1_url]} --description='#{node[:gigablog][:user1_description]}'
+	sudo /usr/local/bin/wp user update --path=#{wordpress_dir} #{node[:gigablog][:user2_email]}  --description='#{node[:gigablog][:user2_description]}'
+ 	EOH
 end
 
 # Make theme dir readable by apache
