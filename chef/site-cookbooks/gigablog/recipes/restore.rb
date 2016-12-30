@@ -109,6 +109,11 @@ directory theme_dir do
   action :create
 end
 
+# Provide new apache conf file for GigaBlog and gigascience redirect
+template "/etc/httpd/sites-available/wordpress.conf" do
+    source 'wordpress.conf.erb'
+    mode '0644'
+end
 
 ###########################################
 #### Set up automated database backups ####
