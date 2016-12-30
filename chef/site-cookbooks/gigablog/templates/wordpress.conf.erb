@@ -1,0 +1,22 @@
+<VirtualHost *:80>
+	ServerName localhost
+	# Redirect URL root to GigaScience OUP site
+	RedirectMatch ^/$ https://academic.oup.com/gigascience
+
+	# Use alias to redirect to GigaBlog WP site
+	Alias "/blog" "/var/www/wordpress"
+	<Directory /var/www/wordpress>
+   		Options FollowSymLinks
+    	AllowOverride FileInfo Options
+    	Order allow,deny
+    	Allow from all
+    </Directory>
+
+	LogLevel info
+	ErrorLog /var/log/httpd/wordpress-error.log
+	CustomLog /var/log/httpd/wordpress-access.log combined
+
+	RewriteEngine On
+	RewriteLog /var/log/httpd/wordpress-rewrite.log
+	RewriteLogLevel 0
+</VirtualHost>
