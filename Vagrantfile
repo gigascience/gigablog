@@ -61,7 +61,7 @@ Vagrant.configure(2) do |config|
     aws.ami = "ami-b85e86db" # selinux on
     aws.region = ENV['AWS_DEFAULT_REGION']
     aws.instance_type = "t2.micro"
-    aws.elastic_ip = ""
+    aws.elastic_ip = ENV['AWS_GIGABLOG_ELASTIC_IP']
     aws.tags = {
       'Name' => 'gigablog',
       'Deployment' => 'test',
