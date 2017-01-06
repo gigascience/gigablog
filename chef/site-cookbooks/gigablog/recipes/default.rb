@@ -156,7 +156,7 @@ cron 'WordPress backup cron job' do
     shell '/bin/bash'
     path '/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin'
     user 'root'
-    command '/vagrant/scripts/db_backup.sh'
+    command '/vagrant/scripts/db_backup.sh #{wordpress_dir}'
 end
 
 bash 'restart cron service' do
