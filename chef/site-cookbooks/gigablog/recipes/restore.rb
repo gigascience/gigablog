@@ -56,6 +56,10 @@ vagrant_dir = node[:gigablog][:root_dir]
 root_password = node[:wordpress][:db][:root_password]
 user_password = node[:wordpress][:db][:password]
 
+elastic_ip = node[:aws][:aws_elastic_ip]
+# Escape dots in elastic IP address
+esc_elastic_ip = elastic_ip.gsub! '.', '\.'
+
 bash 'Restore GigaBlog' do
   cwd '/tmp'
   code <<-EOH
@@ -77,6 +81,8 @@ bash 'Restore GigaBlog' do
     mysqldump -u root --password=#{root_password} --no-data #{node[:wordpress][:db][:name]} | grep ^DROP > /tmp/drop.sql
     mysql -u root --password=#{root_password}  #{node[:wordpress][:db][:name]} < /tmp/drop.sql
     rm /tmp/drop.txt
+    # Replace all urls in sql file with value of the site_url variable
+    sed -i.bak s_#{esc_elastic_ip}_#{site_url}_g /tmp/database.sql
     mysql -u root --password=#{root_password} wordpressdb < /tmp/database.sql
 
     # Restore WP directory

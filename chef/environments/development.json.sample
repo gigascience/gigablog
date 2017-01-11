@@ -55,7 +55,8 @@
         "aws_access_key_id": "",
         "aws_secret_access_key": "",
         "aws_default_region": "ap-southeast-1",
-        "aws_security_groups": ""
+        "aws_security_groups": "",
+        "aws_elastic_ip": ""
     }
   },
   "nginx": {
