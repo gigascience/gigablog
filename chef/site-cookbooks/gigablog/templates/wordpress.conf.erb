@@ -1,11 +1,11 @@
 <VirtualHost *:80>
-	ServerName localhost
+	ServerName <%= node[:gigablog][:servername] %>
 	# Redirect URL root to GigaScience OUP site
 	RedirectMatch ^/$ https://academic.oup.com/gigascience
 
 	# Use alias to redirect to GigaBlog WP site
-	Alias "/blog" "/var/www/wordpress"
-	<Directory /var/www/wordpress>
+	Alias "/blog" "<%= node[:wordpress][:dir] %>"
+	<Directory <%= node[:wordpress][:dir] %>>
    		Options FollowSymLinks
     	AllowOverride FileInfo Options
     	Order allow,deny
