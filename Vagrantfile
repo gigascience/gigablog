@@ -87,8 +87,6 @@ Vagrant.configure(2) do |config|
       :environment => "vagrant",
       :gigablog => {
         :server_names => ["localhost"],
-        :root_dir => "/vagrant",
-        :site_dir => "/vagrant",
         :log_dir => "/vagrant/log",
       },
       :nginx => {
