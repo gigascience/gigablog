@@ -51,10 +51,12 @@ end
 
 site_url = node[:gigablog][:url]
 wordpress_dir = node[:wordpress][:dir]
-vagrant_dir = node[:gigablog][:root_dir]
+vagrant_dir = node[:gigablog][:vagrant_dir]
 
 root_password = node[:wordpress][:db][:root_password]
 user_password = node[:wordpress][:db][:password]
+
+wp_theme = node[:gigablog][:theme]
 
 elastic_ip = node[:aws][:aws_elastic_ip]
 # Escape dots in elastic IP address
@@ -160,7 +162,14 @@ template "root/.aws/config" do
     action :create_if_missing
 end
 
-template "#{vagrant_dir}/scripts/db_backup.sh" do
+directory '/vagrant/scripts' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+template "/vagrant/scripts/db_backup.sh" do
     source 'db_backup.sh.erb'
     mode '0644'
 end
