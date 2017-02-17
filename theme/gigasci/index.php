@@ -100,7 +100,7 @@
         </div>
     </div><!-- /.blog-sidebar -->
 
-    <div class="row top-buffer">
+    <div class="row">
         <div class="col-sm-8 blog-main">
             <div class="blog-post">
                 <h2 class="blog-post-title">Sample blog post</h2>
@@ -124,7 +124,7 @@
         </div><!-- /.blog-main -->
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-			<div class="sidebar-module sidebar-module-inset">
+			<div class="sidebar-module">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Subscribe to GigaBlog</h3>
@@ -166,10 +166,47 @@
 </div><!-- /.container -->
 
 <footer class="blog-footer">
-	<p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-	<p>
-		<a href="#">Back to top</a>
-	</p>
+    <div class="row top-buffer">
+        <hr>
+        <div class="col-sm-3">
+            <h4>About Us</h4>
+            <ul>
+                <li><a href="#">GigaScience</a></li>
+                <li><a href="#">GigaDB</a></li>
+                <li><a href="#">GigaGalaxy</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-3">
+            <h4>Social Media</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Google+</a></li>
+                <li><a href="#">Sina Webo</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-3">
+            <h4>BGI</h4>
+            <p>
+                <a href="#">Back to top</a>
+            </p>
+        </div>
+
+        <div class="col-sm-3">
+            <h4>Oxford University Press</h4>
+            <p>
+                <a href="#">Back to top</a>
+            </p>
+        </div>
+
+    </div>
+
+
+
+
 </footer>
 
 
