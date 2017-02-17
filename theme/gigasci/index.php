@@ -100,7 +100,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row top-buffer">
         <div class="col-sm-8 blog-main">
             <div class="blog-post">
                 <h2 class="blog-post-title">Sample blog post</h2>
@@ -125,7 +125,23 @@
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
 			<div class="sidebar-module sidebar-module-inset">
-				<h4>About</h4>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Panel heading without title</div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+
+				<h4>Subscribe to GigaBlog</h4>
 				<p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
 			</div>
 			<div class="sidebar-module">
