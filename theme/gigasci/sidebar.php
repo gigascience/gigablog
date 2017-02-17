@@ -28,7 +28,9 @@
 				<h3 class="panel-title">Archive</h3>
 			</div>
 			<div class="panel-body">
-				A post
+				<ol class="list-unstyled">
+					<?php wp_get_archives( 'type=monthly' ); ?>
+				</ol>
 			</div>
 		</div>
 
