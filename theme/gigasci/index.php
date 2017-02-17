@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,11 +21,6 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
           crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
     <link href="<?php bloginfo('template_directory');?>/test.css" rel="stylesheet">
@@ -81,6 +75,7 @@
 </div>
 
 <div class="container">
+
 	<div class="row">
 		<div class="col-sm-8 blog-main">
             <div class="jumbotron">
@@ -88,20 +83,8 @@
                 <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                 <hr class="my-4">
                 <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-
             </div>
-		</div><!-- /.blog-main -->
 
-		<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-            <div id="twitter_timeline" style="height:400px;">
-                <a class="twitter-timeline" data-dnt="true" height="400" href="https://twitter.com/gigascience" data-widget-id="385649284785266688">Tweets by @GigaScience</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </div>
-        </div>
-    </div><!-- /.blog-sidebar -->
-
-    <div class="row">
-        <div class="col-sm-8 blog-main">
             <div class="blog-post">
                 <h2 class="blog-post-title">Sample blog post</h2>
                 <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
@@ -121,10 +104,15 @@
                     <li><a href="#">Next</a></li>
                 </ul>
             </nav>
-        </div><!-- /.blog-main -->
+		</div><!-- /.blog-main -->
 
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-			<div class="sidebar-module">
+		<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div id="twitter_timeline" style="height:400px;">
+                <a class="twitter-timeline" data-dnt="true" height="400" href="https://twitter.com/gigascience" data-widget-id="385649284785266688">Tweets by @GigaScience</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+
+            <div class="sidebar-module">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Subscribe to GigaBlog</h3>
@@ -160,8 +148,8 @@
                         A post
                     </div>
                 </div>
-		</div><!-- /.blog-sidebar -->
-	</div><!-- /.row -->
+        </div>
+    </div><!-- /.blog-sidebar -->
 
 </div><!-- /.container -->
 
@@ -203,10 +191,6 @@
         </div>
 
     </div>
-
-
-
-
 </footer>
 
 
@@ -214,6 +198,9 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </body>
 </html>
