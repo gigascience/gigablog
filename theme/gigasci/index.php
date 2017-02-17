@@ -75,7 +75,6 @@
 </div>
 
 <div class="container">
-
 	<div class="row">
 		<div class="col-sm-8 blog-main">
             <div class="jumbotron">
@@ -148,9 +147,9 @@
                         A post
                     </div>
                 </div>
-        </div>
-    </div><!-- /.blog-sidebar -->
-
+            </div>
+        </div><!-- /.blog-sidebar -->
+    </div><!-- /.row -->
 </div><!-- /.container -->
 
 <footer class="blog-footer">
@@ -189,8 +188,7 @@
                 <a href="#">Back to top</a>
             </p>
         </div>
-
-    </div>
+    </div><!-- /.row -->
 </footer>
 
 
