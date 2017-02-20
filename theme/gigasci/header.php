@@ -46,7 +46,12 @@
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<button type="button"
+                            class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#navbar"
+                            aria-expanded="false"
+                            aria-controls="navbar">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -57,13 +62,18 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse navbar-right">
 					<ul class="nav navbar-nav">
-						<li><a href="#">Facebook</a></li>
-						<li><a href="#">Twitter</a></li>
+						<li><a class="navbar-brand" href="https://www.facebook.com/GigaScience/">
+                                <img src="<?php bloginfo('template_directory');?>/inc/images/Facebook.svg" width="30" height="30" alt="">
+                            </a>
+                        <li><a class="navbar-brand" href="https://twitter.com/GigaScience">
+                                <img src="<?php bloginfo('template_directory');?>/inc/images/Twitter.svg" width="30" height="30" alt="">
+                            </a>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Google+</a></li>
-								<li><a href="#">Sina Webo</a></li>
+								<li><a href="https://plus.google.com/+GigaScienceJournal">Google+</a></li>
+                                <li><a href="https://www.linkedin.com/company/gigascience">LinkedIn</a></li>
+								<li><a href="http://weibo.com/gigasciencejournal">Sina Webo</a></li>
 							</ul>
 						</li>
 					</ul>
