@@ -34,7 +34,7 @@
 <body>
 
 <!--<div class="blog-masthead">-->
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top" style="background-color: #FFFFFF;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button"
