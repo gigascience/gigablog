@@ -4,6 +4,8 @@
 
         <div class="col-sm-8 blog-main">
 
+            <h4>Latest posts</h4>
+
 			<?php
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
 
