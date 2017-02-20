@@ -42,9 +42,8 @@
 <body>
 
 <div class="blog-masthead">
-	<div class="container">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
 				<div class="navbar-header">
 					<button type="button"
                             class="navbar-toggle collapsed"
@@ -85,9 +84,8 @@
 					</form>
 
 				</div><!--/.nav-collapse -->
-			</div><!--/.container-fluid -->
+			</div><!--/.container -->
 		</nav>
-	</div>
 </div>
 
 <div class="container">
