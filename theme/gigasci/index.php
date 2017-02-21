@@ -6,6 +6,8 @@
 
             <h4>Latest posts</h4>
 
+			<?php query_posts('posts_per_page=4'); ?>
+
 			<?php
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
 
