@@ -36,7 +36,7 @@
 			</div>
 			<div class="panel-body">
 				<ol class="list-unstyled">
-					<?php wp_get_archives( 'type=monthly&limit=6' ); ?>
+					<?php wp_get_archives( 'type=monthly&limit=6&show_post_count=true' ); ?>
 				</ol>
 			</div>
 		</div>
