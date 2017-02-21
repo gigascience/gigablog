@@ -21,7 +21,9 @@
 	<div class="sidebar-module">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Subscribe to GigaBlog</h3>
+
+				<h3 class="panel-title "><span class="glyphicon glyphicon-envelope"></span> Subscribe to GigaBlog</h3>
+
 			</div>
 			<div class="panel-body">
 				Enter your email

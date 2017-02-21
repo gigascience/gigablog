@@ -19,8 +19,10 @@
 <!--		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"-->
 <!--		  crossorigin="anonymous">-->
     <link href="<?php bloginfo('template_directory');?>/inc/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
-	<!-- Custom styles for this template -->
+
+    <!-- Custom styles for this template -->
 	<link href="<?php bloginfo('template_directory');?>/test.css" rel="stylesheet">
 
 
