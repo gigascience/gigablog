@@ -46,7 +46,7 @@
 				<h3 class="panel-title">Popular tags</h3>
 			</div>
 			<div class="panel-body">
-				<?php the_tags( '<ul><li>', '</li><li>', '</li></ul>' ); ?>
+				<?php the_tags( '<ul class="list-unstyled list-group"><li>', '</li><li>', '</li></ul>' ); ?>
 			</div>
 		</div>
 	</div>
