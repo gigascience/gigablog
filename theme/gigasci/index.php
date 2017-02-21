@@ -2,7 +2,7 @@
 
     <div class="row">
 
-        <div class="col-sm-8 blog-main">
+        <div class="col-sm-9 blog-main">
 
             <h4>Latest posts</h4>
 

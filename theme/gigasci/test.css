@@ -14,3 +14,7 @@
     color: #999;
     vertical-align: middle;
 }
+
+.top-buffer {
+    margin-top:20px;
+}

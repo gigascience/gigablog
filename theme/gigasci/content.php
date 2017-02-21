@@ -3,7 +3,25 @@
     <p class="blog-post-meta"><?php the_date(); ?></p>
     <a href="#"><?php the_author(); ?></a>
 
+    <div class="row top-buffer">
+
+        <div class="col-md-2">
+
+	<?php if ( has_post_thumbnail() ) {
+		the_post_thumbnail('thumbnail');
+	}
+	?>
+
+        </div>
+
+        <div class="col-md-7 col-md-offset-1">
+
 	<?php the_excerpt(); ?>
+        </div>
+
+    </div>
+
+
 
     <a href="<?php comments_link(); ?>">
 		<?php
