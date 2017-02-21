@@ -26,7 +26,7 @@
 
 			</div>
 			<div class="panel-body">
-				Enter your email
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
 			</div>
 		</div>
 
