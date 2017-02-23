@@ -18,7 +18,7 @@
 <!--		  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
 <!--		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"-->
 <!--		  crossorigin="anonymous">-->
-    <link href="<?php bloginfo('template_directory');?>/inc/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php bloginfo('template_directory');?>/inc/css/bootstrap.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
 
@@ -72,10 +72,12 @@
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right"> 
-                    <div class="form-group"> 
-                        <input type="text" class="form-control" placeholder="Search"> 
-                    </div> 
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
                 </form>
             </div><!--/.nav-collapse -->
         </div><!--/.container -->
