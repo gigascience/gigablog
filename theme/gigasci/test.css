@@ -23,12 +23,15 @@
     font-weight: 300;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-top: 3px solid #e2e4e2;
+    border-bottom: 1px solid #e2e4e2;
 }
 
 .sidebar-content {
     font-weight: 300;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-bottom: 1px solid #e2e4e2;
 }
 
 .footer-title {
