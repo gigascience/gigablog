@@ -1,18 +1,30 @@
 
-.blog-title {
+.blog-title-giga {
     font-size: 30px;
+    color: #B3C100;
+    font-weight: bold;
+}
+
+.blog-title-blog {
+    font-size: 30px;
+    color: #B3C100;
+    font-weight: bold;
 }
 
 .blog-title-description-divider {
     font-size: 40px;
-    color: #999;
+    color: #4CB5F5;
 }
 
 .blog-description {
     display: inline-block;
     font-size: 15px;
-    color: #999;
+    color: #B7B8B6;
     vertical-align: middle;
+}
+
+.latest-posts-styling {
+    font-weight: 300;
 }
 
 .top-buffer {
@@ -21,17 +33,17 @@
 
 .sidebar-title {
     font-weight: 300;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 3px solid #e2e4e2;
-    border-bottom: 1px solid #e2e4e2;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    border-top: 3px solid #4CB5F5;
+    /*border-bottom: 1px solid #e2e4e2;*/
 }
 
 .sidebar-content {
     font-weight: 300;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e2e4e2;
+    /*padding-top: 10px;*/
+    padding-bottom: 20px;
+    /*border-bottom: 1px solid #e2e4e2;*/
 }
 
 .footer-title {

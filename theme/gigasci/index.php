@@ -4,7 +4,7 @@
 
         <div class="col-sm-9 blog-main">
 
-            <h4>Latest posts</h4>
+            <h4 class="latest-posts-styling">Latest posts</h4>
 
 			<?php query_posts('posts_per_page=4'); ?>
 
