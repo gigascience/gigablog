@@ -50,7 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="blog-title" href="#">GigaBlog</a>
+                <a class="blog-title-giga" href="#">Giga</a><a class="blog-title-blog" href="#">Blog</a>
                 <a class="blog-title-description-divider" href="#">|</a>
                 <p class="blog-description" href="#">Data-driven blogging by the GigaScience<br /> editors</p>
             </div>
