@@ -19,6 +19,18 @@
     margin-top:20px;
 }
 
+.sidebar-title {
+    font-weight: 300;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sidebar-content {
+    font-weight: 300;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .footer-title {
     font-weight: 300;
     padding-top: 10px;
