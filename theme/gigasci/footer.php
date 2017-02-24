@@ -3,35 +3,35 @@
     <hr>
 	<div class="inner-footer row top-buffer">
 		<div class="col-sm-3">
-			<h4>Products</h4>
+			<h4 class="footer-title">Our resources</h4>
 			<ul class="list-unstyled list-group">
-				<li><a href="https://academic.oup.com/gigascience">GigaScience</a></li>
-				<li><a href="http://gigadb.org">GigaDB</a></li>
-				<li><a href="http://gigagalaxy.net">GigaGalaxy</a></li>
+				<li class="footer-content"><a href="https://academic.oup.com/gigascience">GigaScience</a></li>
+				<li class="footer-content"><a href="http://gigadb.org">GigaDB</a></li>
+				<li class="footer-content"><a href="http://gigagalaxy.net">GigaGalaxy</a></li>
 			</ul>
 		</div>
 
         <div class="col-sm-3">
-            <h4>Who we are</h4>
+            <h4 class="footer-title">Who we are</h4>
             <ul class="list-unstyled list-group">
-                <li><a href="#">About us</a></li>
-                <li><a href="https://academic.oup.com/gigascience">Contact us</a></li>
-                <li><a href="https://academic.oup.com/gigascience">Join us</a></li>
+                <li class="footer-content"><a href="#">About us</a></li>
+                <li class="footer-content"><a href="#">Contact us</a></li>
+                <li class="footer-content"><a href="#">Join us</a></li>
             </ul>
         </div>
 
 		<div class="col-sm-3">
-			<h4>Connect with us</h4>
+			<h4 class="footer-title">Connect with us</h4>
 			<ul class="list-unstyled list-group">
-				<li><a href="https://www.facebook.com/GigaScience/">Facebook</a></li>
-				<li><a href="https://twitter.com/GigaScience">Twitter</a></li>
-				<li><a href="https://plus.google.com/+GigaScienceJournal">Google+</a></li>
-				<li><a href="http://weibo.com/gigasciencejournal">Sina Webo</a></li>
-				<li><a href="https://www.linkedin.com/company/gigascience">LinkedIn</a></li>
+				<li class="footer-content"><a href="https://www.facebook.com/GigaScience/">Facebook</a></li>
+				<li class="footer-content"><a href="https://twitter.com/GigaScience">Twitter</a></li>
+				<li class="footer-content"><a href="https://plus.google.com/+GigaScienceJournal">Google+</a></li>
+				<li class="footer-content"><a href="http://weibo.com/gigasciencejournal">Sina Webo</a></li>
+				<li class="footer-content"><a href="https://www.linkedin.com/company/gigascience">LinkedIn</a></li>
 			</ul>
 		</div>
         <div class="col-sm-3">
-            <h4 style="text-align: center">We are published by</h4>
+            <h4 class="footer-title" style="text-align: center">GigaScience is published by</h4>
                 <div>
                     <ul class="list-unstyled list-group" style="text-align: center">
                         <li><img src="<?php bloginfo('template_directory'); ?>/inc/images/BGI_logo.png" style="border:0px;margin:20px;clear:both;"></li>

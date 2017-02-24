@@ -18,3 +18,15 @@
 .top-buffer {
     margin-top:20px;
 }
+
+.footer-title {
+    font-weight: 300;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.footer-content {
+    font-weight: 300;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
