@@ -34,7 +34,7 @@
 .sidebar-title {
     font-weight: 300;
     padding-top: 40px;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
     border-top: 3px solid #4CB5F5;
     /*border-bottom: 1px solid #e2e4e2;*/
 }
@@ -48,7 +48,6 @@
 
 .sidebar-author {
     font-weight: 300;
-    padding-bottom: 20px;
     text-align: center;
 }
 
