@@ -117,6 +117,11 @@ directory theme_dir do
   action :create
 end
 
+# Create link to theme in /vagrant directory
+link '/var/www/wordpress/wp-content/themes/gigasci' do
+  to '/vagrant/theme/gigasci'
+end
+
 # Provide new apache conf file for GigaBlog and gigascience redirect
 template "/etc/httpd/sites-available/wordpress.conf" do
     source 'wordpress.conf.erb'
