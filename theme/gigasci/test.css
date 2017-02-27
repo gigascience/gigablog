@@ -46,6 +46,18 @@
     /*border-bottom: 1px solid #e2e4e2;*/
 }
 
+.sidebar-author {
+    font-weight: 300;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.avatar {
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
 .footer-title {
     font-weight: 300;
     padding-top: 10px;
