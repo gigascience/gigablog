@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: gigablog
-# Recipe:: default
+# Recipe:: restore
 #
 # Copyright 2016, GigaScience
 #
@@ -122,6 +122,21 @@ template "/etc/httpd/sites-available/wordpress.conf" do
     source 'wordpress.conf.erb'
     mode '0644'
 end
+
+
+##################
+#### Template ####
+##################
+
+template "/vagrant/theme/gigasci/header.php" do
+    source 'header.php.erb'
+    mode '0644'
+    ignore_failure true
+    owner 'apache'
+    group 'apache'
+    action :create
+end
+
 
 ###########################################
 #### Set up automated database backups ####
