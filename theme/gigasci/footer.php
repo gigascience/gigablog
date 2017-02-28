@@ -34,8 +34,8 @@
             <h4 class="footer-title" style="text-align: center">GigaScience is published by</h4>
                 <div>
                     <ul class="list-unstyled list-group" style="text-align: center">
-                        <li><img src="<?php bloginfo('template_directory'); ?>/inc/images/BGI_logo.png" style="border:0px;margin:20px;clear:both;"></li>
-                        <li><img src="<?php bloginfo('template_directory'); ?>/inc/images/oup-logo-footer.png" style="border:0px;margin:0px;clear:both;"></li>
+                        <li><img src="<?php bloginfo('template_directory'); ?>/images/BGI_logo.png" style="border:0px;margin:20px;clear:both;"></li>
+                        <li><img src="<?php bloginfo('template_directory'); ?>/images/oup-logo-footer.png" style="border:0px;margin:0px;clear:both;"></li>
                 </div>
 
             </div>
