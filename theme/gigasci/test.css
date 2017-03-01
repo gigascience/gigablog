@@ -105,7 +105,8 @@ h1, .h1 {
     clear:both;
     padding:20px 0;
     position:relative;
-    font-size:11px;
+    font-size:14px;
+    font-weight: 300;
     line-height:13px;
 }
 
@@ -113,7 +114,8 @@ h1, .h1 {
     display:block;
     float:left;
     margin: 2px 2px 2px 0;
-    padding:6px 9px 5px 9px;
+    /*padding:6px 9px 5px 9px;*/
+    padding:10px 13px 10px 13px;
     text-decoration:none;
     width:auto;
     color:#fff;
@@ -126,7 +128,17 @@ h1, .h1 {
 }
 
 .pagination .current{
-    padding:6px 9px 5px 9px;
+    /*padding:6px 9px 5px 9px;*/
+    padding:10px 13px 10px 13px;
     background: #3279BB;
     color:#fff;
+}
+
+/* Read more buttons */
+.btn.btn-default.read-more {
+    float: right;
+    border: 1px solid #E8E8E8;
+    color: #B3C100;
+    background-color: transparent;
+    margin-top: 10px;
 }
