@@ -7,28 +7,20 @@
     <a href="#"><?php the_author(); ?></a>
 
     <div class="row top-buffer">
-
         <div class="col-md-2">
-
-	<?php if ( has_post_thumbnail() ) {
-		the_post_thumbnail('thumbnail');
-	}
-	?>
-
+            <?php if ( has_post_thumbnail() ) {
+                the_post_thumbnail('thumbnail');
+            }
+            ?>
         </div>
-
         <div class="col-md-7 col-md-offset-1">
-
-	<?php the_excerpt(); ?>
+	        <?php the_excerpt(); ?>
+            <p><a class="btn btn-default read-more" href="<?php the_permalink(); ?>"><?php _e( 'Continue reading', 'gigasci' ); ?> <i class="fa fa-chevron-right"></i></a></p>
         </div>
-
     </div>
-
-
 
     <a href="<?php comments_link(); ?>">
 		<?php
-		printf( _nx( 'One Comment', '%1$s Comments', get_comments_number(), 'comments title', 'textdomain' ), number_format_i18n( 						get_comments_number() ) ); ?>
+		printf( _nx( 'One Comment', '%1$s Comments', get_comments_number(), 'comments title', 'textdomain' ), number_format_i18n( get_comments_number() ) ); ?>
     </a>
-
 </div><!-- /.blog-post -->
