@@ -6,8 +6,6 @@
 
             <h4 class="latest-posts-styling">Latest posts</h4>
 
-			<?php query_posts('posts_per_page=4'); ?>
-
 			<?php
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
 
@@ -15,12 +13,9 @@
 
 			endwhile; ?>
 
-                <nav>
-                    <ul class="pager">
-                        <li><?php next_posts_link( 'Previous' ); ?></li>
-                        <li><?php previous_posts_link( 'Next' ); ?></li>
-                    </ul>
-                </nav>
+            <?php if (function_exists("pagination")) {
+                pagination($additional_loop->max_num_pages);
+            } ?>
 
             <?php endif;
 			?>

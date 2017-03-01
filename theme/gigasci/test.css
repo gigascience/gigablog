@@ -1,3 +1,32 @@
+/* Table of Contents:
+	1. Reset Styles
+	2. Baseline (Default) Styles
+	3. Column Structure
+	4. Main Column (articles, etc)
+	5. Comments and Pingbacks
+	6. Sidebar lists and Ads
+	7. Footer
+*/
+
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-size: 16px;*/
+    /*font-size: 1rem;*/
+    line-height: 1.5;
+    color: #333333;
+    background-color: #FFF;
+}
+
+p {
+    font-weight: 300;
+}
+
+h1, .h1 {
+    font-size: 1.2em;
+    line-height: 1.333em;
+    font-weight: 300;
+    background-color: #FFF;
+}
 
 .blog-title-giga {
     font-size: 30px;
@@ -68,4 +97,36 @@
     font-weight: 300;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+
+/* Pagination */
+.pagination {
+    clear:both;
+    padding:20px 0;
+    position:relative;
+    font-size:11px;
+    line-height:13px;
+}
+
+.pagination span, .pagination a {
+    display:block;
+    float:left;
+    margin: 2px 2px 2px 0;
+    padding:6px 9px 5px 9px;
+    text-decoration:none;
+    width:auto;
+    color:#fff;
+    background: #555;
+}
+
+.pagination a:hover{
+    color:#fff;
+    background: #3279BB;
+}
+
+.pagination .current{
+    padding:6px 9px 5px 9px;
+    background: #3279BB;
+    color:#fff;
 }
