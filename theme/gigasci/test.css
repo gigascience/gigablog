@@ -161,6 +161,18 @@ ol.commentlist {
     margin: 5% 0;
     list-style-type: none;
 }
+.comment-list {
+    padding: 0;
+    margin: 5% 0;
+    list-style-type: none;
+}
+
+.comment-metadata {
+    /*font-size: 11px;*/
+    /*line-height: 16px;*/
+    margin-bottom: 10px;
+}
+
 ul.children {
     list-style-type: none;
     padding-left: 5%;
@@ -183,14 +195,14 @@ article.comment {
     /*font-family: chaparral-pro, serif;*/
 }
 
-img.avatar {
-    float: left;
-    position: absolute;
-    margin-left: -80px;
-}
-.children article.comment img.avatar {
-    margin-left: -60px;
-}
+/*img.avatar {*/
+    /*float: left;*/
+    /*position: absolute;*/
+    /*margin-left: -80px;*/
+/*}*/
+/*.children article.comment img.avatar {*/
+    /*margin-left: -60px;*/
+/*}*/
 
 .form-allowed-tags {
     display: none;
