@@ -14,6 +14,7 @@
             /* wp_list_comments function can use a callback function */
             /* gigasci_comment in functions.php is the callback function */
             /* to return custom output for comments */
+            /* See http://www.studiograsshopper.ch/code-snippets/customising-wp_list_comments */
 			wp_list_comments('callback=gigasci_comment');
 			?>
 		</ul>
