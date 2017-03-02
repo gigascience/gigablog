@@ -8,6 +8,7 @@
 				get_template_part( 'content-single', get_post_format() ); ?>
 
             <div class="col-md-8">
+                <hr>
             <?php
             if ( comments_open() || get_comments_number() ) :
                 comments_template();
