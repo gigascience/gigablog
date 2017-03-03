@@ -50,9 +50,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="blog-title-giga" href="http://<%= node[:gigablog][:url] %>">Giga</a><a class="blog-title-blog" href="http://<%= node[:gigablog][:url] %>">Blog</a>
-                <a class="blog-title-description-divider" href="#">|</a>
-                <p class="blog-description">Data-driven blogging by the GigaScience<br /> editors</p>
+                <script type="text/javascript">
+					   var message = "(GIGA)Blog";
+					   var colors = new Array("#079347","#000000"); // green, black
+					   for (var i = 0; i < message.length; i++)
+						   if (i == 0 || i == 5) {
+							   document.write("<span class=\"blog-title-giga\" style=\"color:" + colors[0] + ";\">" + message[i] + "</span>");
+						   }
+						   else {
+							   document.write("<span class=\"blog-title-giga\" style=\"color:" + colors[1] + ";\">" + message[i] + "</span>");
+						   }
+				</script>
+                <p class="blog-description">Data-driven blogging by the GigaScience editors</p>
             </div>
             <div id="navbar" class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">

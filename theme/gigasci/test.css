@@ -46,10 +46,10 @@ h1, .h1 {
 }
 
 .blog-description {
-    display: inline-block;
+    /*display: inline-block;*/
     font-size: 15px;
     color: #B7B8B6;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
 }
 
 .latest-posts-styling {
@@ -64,7 +64,7 @@ h1, .h1 {
     font-weight: 300;
     padding-top: 40px;
     /*padding-bottom: 20px;*/
-    border-top: 3px solid #4CB5F5;
+    border-top: 3px solid #079347;
     /*border-bottom: 1px solid #e2e4e2;*/
 }
 
