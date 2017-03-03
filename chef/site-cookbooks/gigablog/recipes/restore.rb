@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: gigablog
-# Recipe:: default
+# Recipe:: restore
 #
 # Copyright 2016, GigaScience
 #
@@ -51,10 +51,12 @@ end
 
 site_url = node[:gigablog][:url]
 wordpress_dir = node[:wordpress][:dir]
-vagrant_dir = node[:gigablog][:root_dir]
+vagrant_dir = node[:gigablog][:vagrant_dir]
 
 root_password = node[:wordpress][:db][:root_password]
 user_password = node[:wordpress][:db][:password]
+
+wp_theme = node[:gigablog][:theme]
 
 elastic_ip = node[:aws][:aws_elastic_ip]
 # Escape dots in elastic IP address
@@ -115,11 +117,31 @@ directory theme_dir do
   action :create
 end
 
+# Create link to theme in /vagrant directory
+link '/var/www/wordpress/wp-content/themes/gigasci' do
+  to '/vagrant/theme/gigasci'
+end
+
 # Provide new apache conf file for GigaBlog and gigascience redirect
 template "/etc/httpd/sites-available/wordpress.conf" do
     source 'wordpress.conf.erb'
     mode '0644'
 end
+
+
+##################
+#### Template ####
+##################
+
+template "/vagrant/theme/gigasci/header.php" do
+    source 'header.php.erb'
+    mode '0644'
+    ignore_failure true
+    owner 'apache'
+    group 'apache'
+    action :create
+end
+
 
 ###########################################
 #### Set up automated database backups ####
@@ -160,7 +182,14 @@ template "root/.aws/config" do
     action :create_if_missing
 end
 
-template "#{vagrant_dir}/scripts/db_backup.sh" do
+directory '/vagrant/scripts' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+template "/vagrant/scripts/db_backup.sh" do
     source 'db_backup.sh.erb'
     mode '0644'
 end
