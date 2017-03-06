@@ -51,26 +51,20 @@
                     <span class="icon-bar"></span>
                 </button>
                 <img class="navbar" src="<?php bloginfo('template_directory');?>/images/gigablog-logo.svg" width="300" height="100">
-                <p class="blog-description">Data-driven blogging by the GigaScience editors</p>
             </div>
             <div id="navbar" class="navbar-collapse collapse navbar-right">
-                <ul class="nav navbar-nav">
-                    <li><a class="navbar-brand" href="https://www.facebook.com/GigaScience/">
-                            <img src="<?php bloginfo('template_directory');?>/images/Facebook.svg" width="30" height="30" alt="">
-                        </a>
-                    <li><a class="navbar-brand" href="https://twitter.com/GigaScience">
-                            <img src="<?php bloginfo('template_directory');?>/images/Twitter.svg" width="30" height="30" alt="">
-                        </a>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://plus.google.com/+GigaScienceJournal">Google+</a></li>
-                            <li><a href="https://www.linkedin.com/company/gigascience">LinkedIn</a></li>
-                            <li><a href="http://weibo.com/gigasciencejournal">Sina Webo</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-right"> 
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Follow us <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="https://plus.google.com/+GigaScienceJournal">Google+</a></li>
+							<li><a href="https://www.linkedin.com/company/gigascience">LinkedIn</a></li>
+							<li><a href="http://weibo.com/gigasciencejournal">Sina Webo</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Log in</a>
+				</ul>
+				<form class="navbar-form navbar-right"> 
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="<?php _e( 'Search...', 'gigasci' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s">
 						<div class="input-group-btn">
@@ -78,7 +72,7 @@
 						</div>
 					</div>
 				</form>
-            </div><!--/.nav-collapse -->
+			</div><!--/.nav-collapse -->
         </div><!--/.container -->
     </nav>
 <!--</div>-->
