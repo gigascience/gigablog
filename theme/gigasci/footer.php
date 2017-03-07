@@ -1,6 +1,5 @@
 
 <footer class="footer">
-    <hr>
 	<div class="inner-footer row top-buffer">
 		<div class="col-sm-3">
 			<h4 class="footer-title">Our resources</h4>
@@ -40,8 +39,6 @@
 
             </div>
         </div>
-
-    <hr>
 
     <p>© 2017 GigaScience</p>
 
