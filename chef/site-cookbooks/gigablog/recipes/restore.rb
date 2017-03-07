@@ -44,6 +44,17 @@ template "root/.aws/config" do
     action :create_if_missing
 end
 
+##########################################################################
+### Fix CSS problem with not updating when using vagrant with local VM ###
+##########################################################################
+gigablog_box = node[:gigablog_box]
+if gigablog_box != "aws"
+	bash 'Fix CSS Vagrant problem' do
+		code <<-EOH
+			sudo sed -i '1 i\EnableSendfile off' /etc/httpd/conf/httpd.conf
+		EOH
+	end
+end
 
 #########################################################
 ### Install WordPress CLI and import GigaBlog content ###
