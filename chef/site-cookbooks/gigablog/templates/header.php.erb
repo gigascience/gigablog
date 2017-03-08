@@ -35,24 +35,25 @@
 
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="col-md-2">
-            <a href="http://<%= node[:gigablog][:url] %>"><img class="navbar" src="<?php bloginfo('template_directory');?>/images/gigablog-logo.svg" width="300" height="100" style="position:relative;top:10px"></a>
+            <a href="http://<%= node[:gigablog][:url] %>"><img class="navbar logo" src="<?php bloginfo('template_directory');?>/images/gigablog-logo.svg" width="300" height="100"></a>
         </div>
         <div class="col-md-10">
             <div class="row">
-                <div class="col-md-12">
-                    <ul class="nav navbar-nav pull-right">
-                        <li><a href="#">Follow us</a>
+                <div class="col-md-12" style="position: relative;">
+                    <ul class="nav navbar-nav pull-right navbar-menu">
+                        <li class="navbar-menu"><a href="#" class="" style="line-height: 50px;">Follow us</a>
                         </li>
-                        <li class="divider-vertical"></li>
-                        <li><a href="#">Log in</a>
+                        <li class="navbar-menu"><a href="#" class="" style="line-height: 50px">Log in</a>
+                        </li>
+                        <li><a href="http://<%= node[:gigablog][:url] %>"><img class="" src="<?php bloginfo('template_directory');?>/images/gigascience-vector.svg" width="100" height="50"></a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="position: relative; bottom: 25px">
                 <div class="col-md-12">
                     <form class="navbar-form pull-right">
                         <div class="input-group"> <span class="input-group-btn">
