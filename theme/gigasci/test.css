@@ -65,8 +65,9 @@ li :link {
      border-bottom-width: 2px;
  }
 
-.navbar-menu ul {
-    line-height: 50px;
+.lower-row {
+    position: relative;
+    bottom: 25px;
 }
 
 .latest-posts-styling {
