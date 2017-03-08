@@ -59,6 +59,10 @@ li :link {
     height: 50px;
 }
 
+.navbar-menu {
+    line-height: 50px;
+}
+
 .navbar-default {
      background-color: white;
      border-color: #079347;
@@ -126,7 +130,6 @@ li :link {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
 
 /* Pagination */
 .pagination {
@@ -223,15 +226,6 @@ article.comment {
     /*font-family: chaparral-pro, serif;*/
 }
 
-/*img.avatar {*/
-    /*float: left;*/
-    /*position: absolute;*/
-    /*margin-left: -80px;*/
-/*}*/
-/*.children article.comment img.avatar {*/
-    /*margin-left: -60px;*/
-/*}*/
-
 .form-allowed-tags {
     display: none;
 }
@@ -295,134 +289,3 @@ input#subscribe_comments {
         width: 100%!important;
     }
 }
-
-/*h3 #comments {*/
-    /*font-weight: 300;*/
-/*}*/
-
-/*cite {*/
-    /*font-weight: 300;*/
-/*}*/
-
-/*#respond h3 {*/
-    /*font-weight: 300;*/
-/*}*/
-
-/*#respond {*/
-    /*!*background: #ececec;*!*/
-    /*padding:0 5px 0 5px;*/
-/*}*/
-
-/*.commentmetadata small {*/
-    /*font-weight: 300;*/
-/*}*/
-
-/*ol #commentlist p {*/
-    /*font-weight: 300;*/
-/*}*/
-
-/*textarea#comment {*/
-    /*width: 500px;*/
-/*}*/
-
-/*.comment-list {*/
-    /*margin-bottom: 40px !important;*/
-    /*margin-left: 0px !important;*/
-    /*padding-left: 0;*/
-/*}*/
-/*.comment .comment-body {*/
-    /*background-color: #ffffff;*/
-    /*margin: 0;*/
-    /*overflow: hidden;*/
-    /*padding: 25px;*/
-    /*margin-top: 2em;*/
-    /*padding-left: 116px;*/
-    /*position: relative;*/
-    /*border: 1px solid rgba(0, 0, 0, 0);*/
-    /*border-color: #E8E8E8;*/
-    /*border-radius: 4px;*/
-/*}*/
-/*.comment-list .children {*/
-    /*margin-left: 0px!important;*/
-    /*padding-left: 40px;*/
-    /*border-left: 1px solid #E8E8E8;*/
-    /*background-repeat: no-repeat;*/
-    /*background-position: left 20px;*/
-/*}*/
-/*.comment-list li.comment > div img.avatar {*/
-    /*position: absolute;*/
-    /*left: 29px;*/
-    /*top: 29px;*/
-/*}*/
-/*#comment-form-title {*/
-    /*font-size: 24px;*/
-    /*padding-bottom: 10px;*/
-/*}*/
-
-/*.comment-metadata {*/
-    /*font-size: 11px;*/
-    /*line-height: 16px;*/
-    /*margin-bottom: 10px;*/
-/*}*/
-/*.comment-reply-link {*/
-    /*float: right;*/
-/*}*/
-/*.form-allowed-tags code {*/
-    /*word-wrap: break-word;*/
-    /*white-space: inherit;*/
-/*}*/
-/*.comment-respond label {*/
-    /*display: block; !* This makes the title go on top of the text field *!*/
-    /*font-weight: normal;*/
-/*}*/
-/*.comment-respond .required {*/
-    /*color: #C7254E;*/
-/*}*/
-
-
-
-    /*!* Highlight active form field *!*/
-
-/*#respond input[type=text], textarea {*/
-    /*-webkit-transition: all 0.30s ease-in-out;*/
-    /*-moz-transition: all 0.30s ease-in-out;*/
-    /*-ms-transition: all 0.30s ease-in-out;*/
-    /*-o-transition: all 0.30s ease-in-out;*/
-    /*outline: none;*/
-    /*padding: 3px 0px 3px 3px;*/
-    /*margin: 5px 1px 3px 0px;*/
-    /*border: 1px solid #DDDDDD;*/
-/*}*/
-
-
-/*#respond input[type=text]:focus, textarea:focus {*/
-    /*box-shadow: 0 0 5px rgba(81, 203, 238, 1);*/
-    /*margin: 5px 1px 3px 0px;*/
-    /*border: 1px solid rgba(81, 203, 238, 1);*/
-/*}*/
-
-/*#author {*/
-    /*font-family: Lobster, "Lobster 1.4", "Droid Sans", Arial;*/
-    /*font-size: 16px;*/
-    /*color:#1d1d1d;*/
-    /*letter-spacing:.1em;*/
-/*}*/
-
-/*#url  {*/
-    /*color: #21759b;*/
-    /*font-family: "Luicida Console", "Courier New", "Courier", monospace;*/
-/*}*/
-
-/*#submit {*/
-    /*font-family: Arial;*/
-    /*color: #ffffff;*/
-    /*font-size: 20px;*/
-    /*padding: 10px;*/
-    /*text-decoration: none;*/
-    /*border:2px solid #00b200;*/
-    /*background-color: transparent;*/
-/*}*/
-
-/*#submit:hover {*/
-    /*background: #ffff00;*/
-/*}*/
