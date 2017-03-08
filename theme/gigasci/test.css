@@ -35,21 +35,27 @@ p {
 a:link {
     /*color: red;*/
     /*font-weight: bold;*/
+    color: black;
 }
 
-a {
+a:visited {
     color: black;
 }
 
 a:hover {
-    color: darkgray;
+    color: grey;
     /*padding-bottom: 5px;*/
     /*font-weight: bold;*/
     text-decoration: none;
-
 }
 
 li :link {
+    color: black;
+    text-decoration: none;
+    /*font-weight: bold;*/
+}
+
+li a:hover {
     color: grey;
     text-decoration: none;
     /*font-weight: bold;*/
