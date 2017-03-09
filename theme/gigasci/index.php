@@ -4,7 +4,7 @@
 
         <div class="col-sm-9 blog-main">
 
-            <h4 class="latest-posts-styling">Latest posts</h4>
+            <h1 class="latest-posts-styling">Latest posts</h1>
 
 			<?php
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
