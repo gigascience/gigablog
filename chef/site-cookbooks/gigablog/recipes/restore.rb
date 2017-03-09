@@ -102,7 +102,7 @@ bash 'Restore GigaBlog' do
     /usr/local/bin/aws s3 cp s3://gigablog-backups/#{node[:gigablog][:wpS3filename]}  /tmp/gigablog_wp.tar.gz >> #{vagrant_dir}/log/aws.log 2>&1
     tar -xvzf /tmp/gigablog_wp.tar.gz -C /tmp
     sudo rm -fr #{wordpress_dir}
-    sudo mv /tmp/wordpress /var/www
+    sudo mv /tmp/var/www/wordpress /var/www
 
     # Set wordpressuser mysql password
 	/usr/bin/mysql -u root --password=#{root_password} --execute "SET PASSWORD FOR 'wordpressuser'@'localhost' = PASSWORD('#{user_password}');"
