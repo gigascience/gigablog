@@ -1,10 +1,6 @@
 <div class="blog-post">
-
-
-
 	<h3 class="blog-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
     <p><?php the_author_posts_link(); ?> - <?php the_date(); ?></p>
-
 
     <div class="row top-buffer">
         <div class="col-md-2">
@@ -21,8 +17,6 @@
 
     <a href="<?php comments_link(); ?>">
 		<?php
-		printf( _nx( 'One Comment', '%1$s Comments', get_comments_number(), 'comments title', 'textdomain' ), number_format_i18n( get_comments_number() ) ); ?>
+		printf( _nx( '1 comment', '%1$s comments', get_comments_number(), 'comments title', 'textdomain' ), number_format_i18n( get_comments_number() ) ); ?>
     </a>
-
-    <hr>
 </div><!-- /.blog-post -->
