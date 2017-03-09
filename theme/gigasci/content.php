@@ -3,8 +3,8 @@
 
 
 	<h3 class="blog-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-    <p class="blog-post-meta"><?php the_date(); ?></p>
-    <a href="#"><?php the_author(); ?></a>
+    <p><?php the_author_posts_link(); ?> - <?php the_date(); ?></p>
+
 
     <div class="row top-buffer">
         <div class="col-md-2">
