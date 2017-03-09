@@ -25,7 +25,7 @@ get_header(); ?>
 
 			<?php if ( have_posts() ) : ?>
 
-                    <h1>
+                    <h1 class="latest-posts-styling">
 						<?php
 						if ( is_day() ) :
 							printf( __( 'Daily Archives: %s', 'gigasci' ), get_the_date() );
