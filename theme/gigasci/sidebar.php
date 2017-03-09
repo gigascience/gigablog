@@ -18,13 +18,6 @@
 
 	<div class="sidebar-module">
         <div class="panel-heading">
-            <h3 class="panel-title sidebar-title"><span class="glyphicon glyphicon-envelope"></span> Subscribe to GigaBlog</h3>
-        </div>
-        <div class="panel-body sidebar-content">
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
-        </div>
-
-        <div class="panel-heading">
             <h3 class="panel-title sidebar-title"><span class="glyphicon glyphicon-book"></span>  Archive</h3>
         </div>
         <div class="panel-body sidebar-content">
