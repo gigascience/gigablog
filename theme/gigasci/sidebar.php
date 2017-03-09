@@ -20,24 +20,22 @@
         <div class="panel-heading">
             <h3 class="panel-title sidebar-title"><span class="glyphicon glyphicon-envelope"></span> Subscribe to GigaBlog</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body sidebar-content">
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
         </div>
 
         <div class="panel-heading">
-            <h3 class="panel-title sidebar-title">Archive</h3>
+            <h3 class="panel-title sidebar-title"><span class="glyphicon glyphicon-book"></span>  Archive</h3>
         </div>
-        <div class="panel-body">
-            <ol class="list-unstyled">
-                <?php wp_get_archives( 'format=custom&before=<p class="sidebar-content">&after=</p>&type=monthly&limit=6' ); ?>
-            </ol>
+        <div class="panel-body sidebar-content">
+            <?php wp_get_archives( 'format=custom&before=<p class="archive-months">&after=</p>&type=monthly&limit=6' ); ?>
         </div>
 
         <div class="panel-heading">
-            <h3 class="panel-title sidebar-title">Popular tags</h3>
+            <h3 class="panel-title sidebar-title"><span class="glyphicon glyphicon-tags"></span> Popular tags</h3>
         </div>
         <div class="panel-body">
-            <?php the_tags( '<ul class="list-unstyled list-group"><li class="sidebar-content">', '</li><li class="sidebar-content">', '</li></ul>' ); ?>
+            <?php the_tags( '<ul class="list-unstyled list-group"><li class="popular-tags">', '</li><li class="sidebar-content">', '</li></ul>' ); ?>
         </div>
     </div>
 </div><!-- /.blog-sidebar -->
