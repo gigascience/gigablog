@@ -41,9 +41,51 @@ required. `gigasciencejournal.com/blog` can be selected by changing
 the value of the `aws_elastic_ip` attribute. The value of the site_url
 attribute is then used instead of `gigasciencejournal.com/blog`.
 
+#### Test deployment
+
 Finally, to use this script, change the value of the [gigablog][instance] 
 attribute from `deploy` to `restore` in `development.json` and then 
 execute `vagrant up`.
+
+#### Production deployment
+
+GigaBlog can be deployed directly onto AWS as a production service using
+Vagrant.
+
+Set the `GIGABLOG_BOX` environment variable in ~/.bash_profile:
+ 
+```bash
+GIGABLOG_BOX='aws'
+```
+
+Then `source ~/.bash_profile` to update environment variables for your
+console terminal session.
+
+To deploy onto an AWS virtual server:
+
+```bash
+$ vagrant up --provider=aws
+# To delete AWS instance
+$ vagrant destroy -f
+```
+
+Note that there are issues with constraints on dependencies for the 
+WordPress cookbook which need to the commented out in 
+`chef/chef-cookbooks/wordpress/metadata.rb`:
+
+```bash
+depends "apache2", ">= 2.0.0"
+depends "database", ">= 1.6.0"
+depends "mysql", ">= 6.0"
+depends "mysql2_chef_gem" #, "~> 1.0.1"
+# depends "build-essential"
+depends "iis", ">= 1.6.2"
+depends "tar", ">= 0.3.1"
+depends "nginx" #, "~> 2.7.4"
+depends "php-fpm" #, "~> 0.6.10"
+depends 'selinux', '~> 0.7'
+
+```
 
 ### Manual restoration
 
