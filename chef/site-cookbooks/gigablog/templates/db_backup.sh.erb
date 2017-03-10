@@ -28,9 +28,9 @@ main() {
 
 	if [ -d "$BACKUP_DIR" ]
 	then
-		$BACKUP_DIR_EXISTS=0
+		BACKUP_DIR_EXISTS=0
 	else
-		$BACKUP_DIR_EXISTS=1
+		BACKUP_DIR_EXISTS=1
 		echo "Backup directory does not exist."
 		echo "Creating " $BACKUP_DIR
 		mkdir --parents $BACKUP_DIR
