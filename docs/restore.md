@@ -24,8 +24,32 @@ Both these files are stored locally on a desktop PC and on AWS S3.
 
 ## How to restore a backup
 
-To restore a wordpressdb  database back onto a MySQL server using its 
-SQL file:
+### Automated restoration using Chef
+
+A Chef script is available for restoring a GigaBlog website.
+
+This script requires the SQL database dump file and tar.gz archive file 
+of the wordpress directory to be available from S3 from where they will 
+be downloaded and used to restore a version of GigaBlog. The names of 
+these files need to be stated in development.json in the sqlS3filename
+and wpS3filename attributes.
+
+SQL dumps from the production service of GigaBlog will contain references
+to `gigasciencejournal.com/blog`. These need to be replaced with
+`localhost:9170/blog` when a test GigaBlog deployed on a local VM is
+required. `gigasciencejournal.com/blog` can be selected by changing
+the value of the `aws_elastic_ip` attribute. The value of the site_url
+attribute is then used instead of `gigasciencejournal.com/blog`.
+
+Finally, to use this script, change the value of the [gigablog][instance] 
+attribute from `deploy` to `restore` in `development.json` and then 
+execute `vagrant up`.
+
+### Manual restoration
+
+This requires SSH access to the server hosting GigaBlog. Once logged in,
+restore a wordpressdb database onto a MySQL server by using its SQL 
+file:
 
 ```bash
 mysql -u root --password=<% root password %> wordpressdb < wordpressdb.sql
