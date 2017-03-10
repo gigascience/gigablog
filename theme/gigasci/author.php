@@ -15,7 +15,7 @@ get_header(); ?>
 
 		<div class="col-sm-9 blog-main">
 
-			<h4 class="latest-posts-styling">Author profile</h4>
+			<h1>Author profile</h1>
 
 			<?php echo get_avatar( get_the_author_meta( 'ID' ), 72 ); ?>
 

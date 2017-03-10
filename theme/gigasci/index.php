@@ -2,9 +2,9 @@
 
     <div class="row">
 
-        <div class="col-sm-9 blog-main">
+        <div class="col-sm-9">
 
-            <h1 class="latest-posts-styling">Latest posts</h1>
+            <h1>Latest posts</h1>
 
 			<?php
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -20,7 +20,7 @@
             <?php endif;
 			?>
 
-        </div> <!-- /.blog-main -->
+        </div>
 
 		<?php get_sidebar(); ?>
 

@@ -20,7 +20,7 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<header class="archive-header">
-					<h1 class="latest-posts-styling""><?php printf( __( 'Tag Archives: %s', 'gigasci' ), single_tag_title( '', false ) ); ?></h1>
+					<h1><?php printf( __( 'Tag Archives: %s', 'gigasci' ), single_tag_title( '', false ) ); ?></h1>
 
 					<?php
 					// Show an optional term description.
