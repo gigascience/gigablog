@@ -9,6 +9,10 @@ set -o nounset
 set -o xtrace
 
 main() {
+	export AWS_ACCESS_KEY_ID=<%= node[:aws][:aws_access_key_id] %>
+	export AWS_SECRET_ACCESS_KEY=<%= node[:aws][:aws_secret_access_key] %>
+	export AWS_DEFAULT_REGION=ap-southeast-1
+
 	BACKUP_DIR="<%= node[:gigablog][:vagrant_dir] %>/backups"
     S3_PREFIX="s3://gigablog-backups/"
     ROOT_MYSQL_PASSWORD="<%= node[:wordpress][:db][:root_password] %>"
@@ -39,7 +43,7 @@ main() {
 
 	# Create name for SQL file
     sql_filename=$BACKUP_DIR"/"$(date +%Y%m%d)"_gigablog_wp_db.sql"
-    s3_sql_filename=$S3_PREFIX$(date +%Y%m%d)".sql"
+    s3_sql_filename=$S3_PREFIX$(date +%Y%m%d)"_wordpressdb.sql"
 
     # Generate database SQL dump
     mysqldump --user root --password=$ROOT_MYSQL_PASSWORD $WORDPRESS_MYSQL_DBNAME > $sql_filename
