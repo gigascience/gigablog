@@ -217,10 +217,11 @@ cron 'WordPress backup cron job' do
     hour '23'
     day '*'
     month '*'
+    weekday '7'
     shell '/bin/bash'
     path '/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin'
     user 'root'
-    command '/vagrant/scripts/db_backup.sh #{wordpress_dir}'
+    command '/vagrant/scripts/db_backup.sh /var/www/wordpress'
 end
 
 bash 'restart cron service' do
