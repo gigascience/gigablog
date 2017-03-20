@@ -41,9 +41,20 @@ required. `gigasciencejournal.com/blog` can be selected by changing
 the value of the `aws_elastic_ip` attribute. The value of the site_url
 attribute is then used instead of `gigasciencejournal.com/blog`.
 
+#### Test deployment
+
 Finally, to use this script, change the value of the [gigablog][instance] 
 attribute from `deploy` to `restore` in `development.json` and then 
 execute `vagrant up`.
+
+#### Production deployment
+
+GigaBlog can be deployed directly onto AWS as a production service using
+Vagrant.
+
+```bash
+$ vagrant up --provider=aws
+```
 
 ### Manual restoration
 
