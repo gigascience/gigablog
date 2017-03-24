@@ -86,6 +86,7 @@ depends "nginx" #, "~> 2.7.4"
 depends "php-fpm" #, "~> 0.6.10"
 depends 'selinux', '~> 0.7'
 
+>>>>>>> 3df63466921b52c26e813922cd66b200a941bfb2
 ```
 
 ### Manual restoration
