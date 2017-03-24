@@ -5,6 +5,10 @@
  * @package gigasci
  */
 
+/**
+ * To add featured image support in posts
+ */
+add_theme_support( 'post-thumbnails' );
 
 function pagination($pages = '', $range = 4)
 {
