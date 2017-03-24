@@ -113,10 +113,6 @@ bash 'Restore GigaBlog' do
 
 	# uploads dir needs to be writable by apache to allow edits
  	sudo chown -R apache:apache #{wordpress_dir}/wp-content/uploads/*
-
- 	# Update users
-	sudo /usr/local/bin/wp user update --path=#{wordpress_dir} #{node[:gigablog][:user1_email]}  --user_url=#{node[:gigablog][:user1_url]} --description='#{node[:gigablog][:user1_description]}'
-	sudo /usr/local/bin/wp user update --path=#{wordpress_dir} #{node[:gigablog][:user2_email]}  --description='#{node[:gigablog][:user2_description]}'
  	EOH
 end
 
