@@ -71,7 +71,8 @@ $ vagrant destroy -f
 
 Note that there are issues with constraints on dependencies for the 
 WordPress cookbook which need to the commented out in 
-`chef/chef-cookbooks/wordpress/metadata.rb`:
+`chef/chef-cookbooks/wordpress/metadata.rb` when deploying a production
+server:
 
 ```bash
 depends "apache2", ">= 2.0.0"
