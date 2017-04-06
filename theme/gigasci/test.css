@@ -353,3 +353,17 @@ img.aligncenter {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* show content on medium and larger screens */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    #hide-content {
+        display: block;
+    }
+}
+
+/* hide content elsewhere */
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    #hide-content {
+        display: none;
+    }
+}
