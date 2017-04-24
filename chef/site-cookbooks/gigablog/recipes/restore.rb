@@ -84,6 +84,10 @@ bash 'Restore GigaBlog' do
     # Install WP WXR import plugin
     sudo /usr/local/bin/wp plugin install wordpress-importer --path=#{wordpress_dir}
     sudo /usr/local/bin/wp plugin activate wordpress-importer --path=#{wordpress_dir}
+
+    # Install user activity plugin
+	sudo /usr/local/bin/wp plugin install aryo-activity-log --path=#{wordpress_dir}
+	sudo /usr/local/bin/wp plugin activate aryo-activity-log --path=#{wordpress_dir}
     # Enable XML parsing
     sudo yum -y install php-xml
     # Enable image cropping
