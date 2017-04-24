@@ -49,8 +49,8 @@ main() {
     mysqldump --user root --password=$ROOT_MYSQL_PASSWORD $WORDPRESS_MYSQL_DBNAME > $sql_filename
 
     # Create zipped tarball backup of wordpress directory
-    zip_filename=$BACKUP_DIR"/"$(date +%Y%m%d)"_gigablog_wp.tar.gz"
-    s3_wp_filename=$S3_PREFIX$(date +%Y%m%d)"_gigablog_wp.tar.gz"
+    zip_filename=$BACKUP_DIR"/"$(date +%Y%m%d)"_gigablog.tar.gz"
+    s3_wp_filename=$S3_PREFIX$(date +%Y%m%d)"_gigablog.tar.gz"
     cd $WORDPRESS_DIR
     cd ..
     tar -czf $zip_filename wordpress
