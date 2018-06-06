@@ -1,22 +1,22 @@
 <VirtualHost *:80>
-	ServerName <%= node[:gigablog][:servername] %>
-	# Redirect URL root to GigaScience OUP site
-	RedirectMatch ^/$ https://academic.oup.com/gigascience
+    ServerName <%= node[:gigablog][:servername] %>
+    # Redirect URL root to GigaScience OUP site
+    RedirectMatch ^/$ https://academic.oup.com/gigascience
 
-	# Use alias to redirect to GigaBlog WP site
-	Alias "/blog" "<%= node[:wordpress][:dir] %>"
-	<Directory <%= node[:wordpress][:dir] %>>
-   		Options FollowSymLinks
-    	AllowOverride FileInfo Options
-    	Order allow,deny
-    	Allow from all
+    # Use alias to redirect to GigaBlog WP site
+    Alias "/blog" "<%= node[:wordpress][:dir] %>"
+    <Directory <%= node[:wordpress][:dir] %>>
+        Options FollowSymLinks
+        AllowOverride FileInfo Options
+        Order allow,deny
+        Allow from all
     </Directory>
 
-	LogLevel info
-	ErrorLog /var/log/httpd/wordpress-error.log
-	CustomLog /var/log/httpd/wordpress-access.log combined
+    LogLevel debug
+    ErrorLog /var/log/httpd/wordpress-error.log
+    CustomLog /var/log/httpd/wordpress-access.log combined
 
-	RewriteEngine On
-	RewriteLog /var/log/httpd/wordpress-rewrite.log
-	RewriteLogLevel 0
+    RewriteEngine On
+    RewriteLog /var/log/httpd/wordpress-rewrite.log
+    RewriteLogLevel 0
 </VirtualHost>

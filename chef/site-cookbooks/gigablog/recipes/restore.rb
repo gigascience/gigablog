@@ -49,11 +49,11 @@ end
 ##########################################################################
 gigablog_box = node[:gigablog_box]
 if gigablog_box != "aws"
-	bash 'Fix CSS Vagrant problem' do
-		code <<-EOH
-			sudo sed -i '1 i\EnableSendfile off' /etc/httpd/conf/httpd.conf
-		EOH
-	end
+    bash 'Fix CSS Vagrant problem' do
+        code <<-EOH
+            sudo sed -i '1 i\EnableSendfile off' /etc/httpd/conf/httpd.conf
+        EOH
+    end
 end
 
 #########################################################
@@ -69,68 +69,68 @@ user_password = node[:wordpress][:db][:password]
 
 wp_theme = node[:gigablog][:theme]
 
-elastic_ip = node[:aws][:aws_elastic_ip]
+gigablog_prod_url = node[:gigablog][:gigablog_prod_url]
 # Escape dots in elastic IP address
-esc_elastic_ip = elastic_ip.gsub! '.', '\.'
+esc_gigablog_prod_url = gigablog_prod_url.gsub! '.', '\.'
 
 bash 'Restore GigaBlog' do
-  cwd '/tmp'
-  code <<-EOH
-  	# Install WP CLI
-  	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-    chmod +x wp-cli.phar
-    sudo mv wp-cli.phar /usr/local/bin/wp
-    sudo /usr/local/bin/wp core install --path=#{wordpress_dir} --url=#{site_url} --title=GigaBlog --admin_user=#{node[:gigablog][:admin]} --admin_email=#{node[:gigablog][:admin_email]} --admin_password=#{node[:gigablog][:admin_password]} --skip-email
-    # Install WP WXR import plugin
-    sudo /usr/local/bin/wp plugin install wordpress-importer --path=#{wordpress_dir}
-    sudo /usr/local/bin/wp plugin activate wordpress-importer --path=#{wordpress_dir}
+    cwd '/tmp'
+    code <<-EOH
+        # Install WP CLI
+        curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        chmod +x wp-cli.phar
+        sudo mv wp-cli.phar /usr/local/bin/wp
+        sudo /usr/local/bin/wp core install --path=#{wordpress_dir} --url=#{site_url} --title=GigaBlog --admin_user=#{node[:gigablog][:admin]} --admin_email=#{node[:gigablog][:admin_email]} --admin_password=#{node[:gigablog][:admin_password]} --skip-email
+        # Install WP WXR import plugin
+        sudo /usr/local/bin/wp plugin install wordpress-importer --path=#{wordpress_dir}
+        sudo /usr/local/bin/wp plugin activate wordpress-importer --path=#{wordpress_dir}
 
-    # Install user activity plugin
-	sudo /usr/local/bin/wp plugin install aryo-activity-log --path=#{wordpress_dir}
-	sudo /usr/local/bin/wp plugin activate aryo-activity-log --path=#{wordpress_dir}
-    # Enable XML parsing
-    sudo yum -y install php-xml
-    # Enable image cropping
-    sudo yum -y install gd gd-devel php-gd
+        # Install user activity plugin
+        sudo /usr/local/bin/wp plugin install aryo-activity-log --path=#{wordpress_dir}
+        sudo /usr/local/bin/wp plugin activate aryo-activity-log --path=#{wordpress_dir}
+        # Enable XML parsing
+        sudo yum -y install php-xml
+        # Enable image cropping
+        sudo yum -y install gd gd-devel php-gd
 
-    # Restore mysql database using sql file in /tmp
-    /usr/local/bin/aws s3 cp s3://gigablog-backups/#{node[:gigablog][:sqlS3filename]} /tmp/database.sql >> #{vagrant_dir}/log/aws.log 2>&1
-    mysqldump -u root --password=#{root_password} --no-data #{node[:wordpress][:db][:name]} | grep ^DROP > /tmp/drop.sql
-    mysql -u root --password=#{root_password}  #{node[:wordpress][:db][:name]} < /tmp/drop.sql
-    rm /tmp/drop.txt
-    # Replace all urls in sql file with value of the site_url variable
-    sed -i.bak s_#{esc_elastic_ip}_#{site_url}_g /tmp/database.sql
-    mysql -u root --password=#{root_password} wordpressdb < /tmp/database.sql
+        # Restore mysql database using sql file in /tmp
+        /usr/local/bin/aws s3 cp s3://gigablog-backups/#{node[:gigablog][:sqlS3filename]} /tmp/database.sql >> #{vagrant_dir}/log/aws.log 2>&1
+        mysqldump -u root --password=#{root_password} --no-data #{node[:wordpress][:db][:name]} | grep ^DROP > /tmp/drop.sql
+        mysql -u root --password=#{root_password}  #{node[:wordpress][:db][:name]} < /tmp/drop.sql
+        rm /tmp/drop.txt
+        # Replace all urls in sql file with value of the site_url variable
+        sed -i.bak s_#{esc_gigablog_prod_url}_#{site_url}_g /tmp/database.sql
+        mysql -u root --password=#{root_password} wordpressdb < /tmp/database.sql
 
-    # Restore WP directory
-    /usr/local/bin/aws s3 cp s3://gigablog-backups/#{node[:gigablog][:wpS3filename]}  /tmp/gigablog_wp.tar.gz >> #{vagrant_dir}/log/aws.log 2>&1
-    tar -xvzf /tmp/gigablog_wp.tar.gz -C /tmp
-    sudo rm -fr #{wordpress_dir}
-    sudo mv /tmp/wordpress /var/www
+        # Restore WP directory
+        /usr/local/bin/aws s3 cp s3://gigablog-backups/#{node[:gigablog][:wpS3filename]}  /tmp/gigablog_wp.tar.gz >> #{vagrant_dir}/log/aws.log 2>&1
+        tar -xvzf /tmp/gigablog_wp.tar.gz -C /tmp
+        sudo rm -fr #{wordpress_dir}
+        sudo mv /tmp/wordpress /var/www
 
-    # Set wordpressuser mysql password
-	/usr/bin/mysql -u root --password=#{root_password} --execute "SET PASSWORD FOR 'wordpressuser'@'localhost' = PASSWORD('#{user_password}');"
-	/usr/bin/mysql -u root --password=#{root_password} --execute "FLUSH PRIVILEGES;"
+        # Set wordpressuser mysql password
+        /usr/bin/mysql -u root --password=#{root_password} --execute "SET PASSWORD FOR 'wordpressuser'@'localhost' = PASSWORD('#{user_password}');"
+        /usr/bin/mysql -u root --password=#{root_password} --execute "FLUSH PRIVILEGES;"
 
-	# Update wp-config.php
-	sed -i "/DB_PASSWORD/s/'[^']*'/'#{user_password}'/2" #{wordpress_dir}/wp-config.php
+        # Update wp-config.php
+        sed -i "/DB_PASSWORD/s/'[^']*'/'#{user_password}'/2" #{wordpress_dir}/wp-config.php
 
-	# uploads dir needs to be writable by apache to allow edits
- 	sudo chown -R apache:apache #{wordpress_dir}/wp-content/uploads/*
- 	EOH
+        # uploads dir needs to be writable by apache to allow edits
+        sudo chown -R apache:apache #{wordpress_dir}/wp-content/uploads/*
+    EOH
 end
 
 # Make theme dir readable by apache
 theme_dir = "/vagrant/theme"
 directory theme_dir do
-  group 'apache'
-  mode '0755'
-  action :create
+    group 'apache'
+    mode '0755'
+    action :create
 end
 
 # Create link to theme in /vagrant directory
 link '/var/www/wordpress/wp-content/themes/gigasci' do
-  to '/vagrant/theme/gigasci'
+    to '/vagrant/theme/gigasci'
 end
 
 # Provide new apache conf file for GigaBlog and gigascience redirect

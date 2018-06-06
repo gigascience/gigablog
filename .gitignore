@@ -24,7 +24,12 @@ tags
 theme/gigasci/header.php
 
 chef/environments/development.json
+chef/environments/local_restore.json
 
 backups/
 log/
 scripts/
+vagrant.log
+gigablog_wp.tar.gz
+
+.DS_Store

@@ -10,13 +10,10 @@ else
 end
 
 Vagrant.configure(2) do |config|
-
   # Vagrant virtual environment box to build from
   config.vm.box = box
-
   # URL from where config.vm.box will be fetched if not on user's system
   config.vm.box_url = box_url
-
   # Cache packages to reduce provisioning time
   if Vagrant.has_plugin?("vagrant-cachier")
     #Configure cached packages to be shared between instances of same base box
@@ -70,10 +67,10 @@ Vagrant.configure(2) do |config|
     ]
     chef.environments_path = 'chef/environments'
 
-    ####################################################
-    #### Set server environment: development or aws ####
-    ####################################################
-    chef.environment = "development"
+    ################################
+    #### Set server environment ####
+    ################################
+    chef.environment = "local_restore"
 
     if ENV['GIGABLOG_BOX'] == 'aws'
         chef.add_recipe "aws"
@@ -88,15 +85,10 @@ Vagrant.configure(2) do |config|
       :gigablog => {
         :server_names => ["localhost"],
         :log_dir => "/vagrant/log",
-      },
-      :nginx => {
-        :version => :latest,
       }
     }
 
     # Additional chef settings to put in solo.rb
     chef.custom_config_path = "Vagrantfile.chef"
-
   end
-
 end

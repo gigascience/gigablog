@@ -7,21 +7,21 @@
 # All rights reserved - Do Not Redistribute
 #
 
-case node[:gigablog][:instance]
+case node[:gigablog][:deployment]
 when 'restore'
     include_recipe "gigablog::restore"
 
     log 'message' do
-    	message 'Restoring GigaBlog WordPress website'
-      	level :info
+        message 'Restoring GigaBLOG WordPress website'
+        level :info
     end
 when 'deploy'
-	include_recipe "gigablog"
+    include_recipe "gigablog"
 
-	log 'message' do
-  		message 'Deploying GigaBlog WordPress website'
-  		level :info
-	end
+    log 'message' do
+        message 'Deploying GigaBLOG WordPress website'
+        level :info
+    end
 end
 
 ['vim', 'tree'].each do |pkg|

@@ -1,10 +1,10 @@
-# Restoring GigaBlog
+# Restoring GigaBLOG
 
-## Creating a backup of GigaBlog
+## Creating a backup of GigaBLOG
 
-Restoring a version of GigaBlog requires all of the WordPress files and
+Restoring a version of GigaBLOG requires all of the WordPress files and
 a SQL dump of its wordpressdb MySQL database. Execute the command below
-on the server hosting the GigaBlog website to create this SQL file:
+on the server hosting the GigaBLOG website to create this SQL file:
 
 ```bash
 mysqldump -u root --password=<% root password %> wordpressdb > wordpressdb.sql
@@ -20,36 +20,38 @@ required. A zipped tarball of these files can be created by:
 tar -zcvf gigablog.tar.gz /var/www/wordpress
 ```
 
-Both these files are stored locally on a desktop PC and on AWS S3.
+A cron job is used to automatically create the above backup files and send 
+upload them in an AWS S3 bucket for storage.
 
 ## How to restore a backup
 
-### Automated restoration using Chef
+### Automated restoration using Chef onto a local Virtual Machine
 
-A Chef script is available for restoring a GigaBlog website.
+A Chef script is available for restoring a GigaBLOG website.
 
 This script requires the SQL database dump file and tar.gz archive file 
 of the wordpress directory to be available from S3 from where they will 
-be downloaded and used to restore a version of GigaBlog. The names of 
-these files need to be stated in development.json in the sqlS3filename
+be downloaded and used to restore a version of GigaBLOG. The names of 
+these files need to be stated in local_restore.json in the sqlS3filename
 and wpS3filename attributes.
 
-SQL dumps from the production service of GigaBlog will contain references
+SQL dumps from the production service of GigaBLOG will contain references
 to `gigasciencejournal.com/blog`. These need to be replaced with
-`localhost:9170/blog` when a test GigaBlog deployed on a local VM is
-required. `gigasciencejournal.com/blog` can be selected by changing
-the value of the `aws_elastic_ip` attribute. The value of the site_url
-attribute is then used instead of `gigasciencejournal.com/blog`.
+`localhost:9170/blog` when a test GigaBLOG deployed on a local VM is
+required. `gigasciencejournal.com/blog` can be selected by providing it as
+the value of the `gigablog_prod_url` attribute. The value of the site_url
+attribute is then used to replace references of `gigasciencejournal.com/blog`
+in the database.
 
 #### Test deployment
 
 Finally, to use this script, change the value of the [gigablog][instance] 
-attribute from `deploy` to `restore` in `development.json` and then 
+attribute from `deploy` to `restore` in `local_restore.json` and then 
 execute `vagrant up`.
 
 #### Production deployment
 
-GigaBlog can be deployed directly onto AWS as a production service using
+GigaBLOG can be deployed directly onto AWS as a production service using
 Vagrant.
 
 Set the `GIGABLOG_BOX` environment variable in ~/.bash_profile:
@@ -91,7 +93,7 @@ depends 'selinux', '~> 0.7'
 
 ### Manual restoration
 
-This requires SSH access to the server hosting GigaBlog. Once logged in,
+This requires SSH access to the server hosting GigaBLOG. Once logged in,
 restore a wordpressdb database onto a MySQL server by using its SQL 
 file:
 
@@ -99,7 +101,7 @@ file:
 mysql -u root --password=<% root password %> wordpressdb < wordpressdb.sql
 ```
 
-The zipped tarball file containing the GigaBlog website also needs to be
+The zipped tarball file containing the GigaBLOG website also needs to be
 extracted to the `/var/www` directory:
 
 ```bash
