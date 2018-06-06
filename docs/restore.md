@@ -165,3 +165,18 @@ extracted to the `/var/www` directory:
 ```bash
 tar -xvzf gigablog.tar.gz -C /var/www
 ```
+
+### Useful commands
+
+#### Reset user password
+
+Its possible to reset user passwords on the command line on the WordPress 
+server. Identify the WordPress ID of the user you need to update:
+```bash
+$ wp --path=/var/www/wordpress
+```
+
+Then update the user's password:
+```bash
+$ wp user update 1 --user_pass=<% new_password%> --path=/var/www/wordpress
+```
