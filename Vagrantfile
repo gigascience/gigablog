@@ -6,7 +6,7 @@ if ENV['GIGABLOG_BOX'] == 'aws'
   box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
 else
   box = "nrel/CentOS-6.7-x86_64"
-  box_url = "https://atlas.hashicorp.com/nrel/boxes/CentOS-6.7-x86_64/versions/1.0.0/providers/virtualbox.box"
+  box_url = "https://vagrantcloud.com/nrel/boxes/CentOS-6.7-x86_64/versions/1.0.0/providers/virtualbox.box"
 end
 
 Vagrant.configure(2) do |config|
@@ -26,6 +26,8 @@ Vagrant.configure(2) do |config|
 
   # Configure shared folder
   config.vm.synced_folder ".", "/vagrant"
+  # Use rsync for shared folders - required for AWS deployment
+  config.vm.allowed_synced_folder_types = :rsync
 
   FileUtils.mkpath("./log")
   FileUtils.chmod_R 0777, ["./log"]
@@ -47,7 +49,7 @@ Vagrant.configure(2) do |config|
     # aws.ami = "ami-1bfa2b78" # selinux disabled
     aws.ami = "ami-b85e86db" # selinux on
     aws.region = ENV['AWS_DEFAULT_REGION']
-    aws.instance_type = "t2.micro"
+    aws.instance_type = "t2.small"
     aws.elastic_ip = ENV['AWS_GIGABLOG_ELASTIC_IP']
     aws.tags = {
       'Name' => 'gigablog',
