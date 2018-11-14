@@ -1,5 +1,5 @@
 {
-  "name": "local_restore",
+  "name": "aws_restore",
   "default_attributes": {
     "wordpress": {
       "db": {
@@ -14,11 +14,11 @@
       "servername": "localhost",
       "theme": "gigasci",
       "deployment": "restore",
-      "sqlS3filename": "20180603_wordpressdb.sql",
-      "wpS3filename": "20180603_gigablog_wp.tar.gz",
+      "sqlS3filename": "20181111_wordpressdb.sql",
+      "wpS3filename": "20181111_gigablog_wp.tar.gz",
       "vagrant_dir": "/vagrant",
       "log_dir": "/var/www/wordpress",
-      "url": "localhost:9170/blog",
+      "url": "gigasciencejournal.com/blog",
       "gigablog_prod_url": "gigasciencejournal.com/blog",
       "admin": "",
       "admin_name": "",
@@ -40,6 +40,6 @@
     "enable_password": "no"
   },
 "json_class": "Chef::Environment",
-"description": "Test environment for restoring GigaBLOG onto local Vagrant VMs",
+"description": "Test environment for restoring GigaBLOG onto AWS cloud instances",
 "chef_type": "environment"
 }

@@ -159,7 +159,7 @@ end
 #### Install GigaBlog ####
 ##########################
 
-case node[:gigablog][:instance]
+case node[:gigablog][:deployment]
 when 'restore'
     include_recipe "gigablog::restore"
 
