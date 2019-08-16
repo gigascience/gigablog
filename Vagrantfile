@@ -72,7 +72,7 @@ Vagrant.configure(2) do |config|
     ################################
     #### Set server environment ####
     ################################
-    chef.environment = "local_restore"
+    chef.environment = "aws_restore"
 
     if ENV['GIGABLOG_BOX'] == 'aws'
         chef.add_recipe "aws"

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: gigablog
+# Cookbook Ngigablog
 # Recipe:: restore
 #
 # Copyright 2016, GigaScience
@@ -16,7 +16,8 @@ aws_default_region = node[:aws][:aws_default_region]
 # Install AWS CLI
 bash 'Install AWS CLI' do
     code <<-EOH
-        curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle.zip" >> /vagrant/log/aws.log 2>&1
+        #curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle.zip" >> /vagrant/log/aws.log 2>&1
+        cp /vagrant/awscli-bundle.zip /tmp
         sudo yum -y install unzip >> /vagrant/log/aws.log 2>&1
         sudo /usr/bin/unzip /tmp/awscli-bundle.zip -d /tmp >> /vagrant/log/aws.log 2>&1
         sudo /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws >> /vagrant/log/aws.log 2>&1
@@ -77,7 +78,9 @@ bash 'Restore GigaBlog' do
     cwd '/tmp'
     code <<-EOH
         # Install WP CLI
-        curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        # curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        curl -O https://github.com/wp-cli/wp-cli/releases/download/v1.5.1/wp-cli-1.5.1.phar
+        cp /tmp/wp-cli-1.5.1.phar /tmp/wp-cli.phar
         chmod +x wp-cli.phar
         sudo mv wp-cli.phar /usr/local/bin/wp
         sudo /usr/local/bin/wp core install --path=#{wordpress_dir} --url=#{site_url} --title=GigaBlog --admin_user=#{node[:gigablog][:admin]} --admin_email=#{node[:gigablog][:admin_email]} --admin_password=#{node[:gigablog][:admin_password]} --skip-email
