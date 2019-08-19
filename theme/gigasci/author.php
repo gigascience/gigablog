@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package gigablog
+ * @package gigablog.com
  * @subpackage gigasci
  * @since
  */
