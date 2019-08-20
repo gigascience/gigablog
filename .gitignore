@@ -1,4 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
+
+# Don't put variables in version control
+.env
+.secrets
+
 ### JetBrains template
 .idea/
 
@@ -25,7 +30,6 @@ theme/gigasci/header.php
 
 backups/
 log/
-scripts/
 vagrant.log
 gigablog_wp.tar.gz
 # Config files can contain private info. Do not put them in version control
