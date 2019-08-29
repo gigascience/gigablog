@@ -65,6 +65,11 @@ TARGET=${APP_SOURCE}/trellis/group_vars/development/wordpress_sites.yml
 VARS='$GIGABLOG_LOCAL_ADMIN_EMAIL:$GIGABLOG_LOCAL_URL'
 envsubst $VARS < $SOURCE > $TARGET
 
+SOURCE=${APP_SOURCE}/ops/configuration/trellis/vault.yml.dist
+TARGET=${APP_SOURCE}/trellis/group_vars/development/vault.yml
+VARS='$GIGABLOG_LOCAL_DB_PASSWORD:$GIGABLOG_LOCAL_URL:$GIGABLOG_LOCAL_ADMIN_PASSWORD'
+envsubst $VARS < $SOURCE > $TARGET
+
 #if [ $GIGADB_ENV != "CI" ];then
 #    cp ops/configuration/nginx-conf/le.${GIGADB_ENV}.ini /etc/letsencrypt/cli.ini
 #fi

@@ -1,0 +1,10 @@
+# Documentation: https://roots.io/trellis/docs/vault/
+vault_mysql_root_password: devpw
+
+# Variables to accompany `group_vars/development/wordpress_sites.yml.dist`
+# Note: the site name (`example.com`) must match up with the site name in the above file.
+vault_wordpress_sites:
+  ${GIGABLOG_LOCAL_URL}:
+    admin_password: ${GIGABLOG_LOCAL_ADMIN_PASSWORD}
+    env:
+      db_password: ${GIGABLOG_LOCAL_DB_PASSWORD}

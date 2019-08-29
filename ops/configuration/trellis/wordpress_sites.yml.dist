@@ -3,7 +3,7 @@
 # Define accompanying passwords/secrets in group_vars/development/vault.yml
 
 wordpress_sites:
-  example.com:
+  ${GIGABLOG_LOCAL_URL}:
     site_hosts:
       - canonical: ${GIGABLOG_LOCAL_URL}
         redirects:
